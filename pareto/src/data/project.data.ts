@@ -23,6 +23,7 @@ export const $: g_project.T.Project<pd.SourceLocation | null> = {
     'license': "TBD",
 
     'dependencies': d({
+        "lib-proto-typesystem": null,
         "res-pareto-resolve": null,
         "lib-fountain-pen": null,
     }),

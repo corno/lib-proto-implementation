@@ -15,6 +15,7 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
             'imports': d({
                 "model": sibling("resolved"),
                 "fp": external("lib-fountain-pen"),
+                "common": external("glo-pareto-common"),
             }),
 
         },
@@ -22,6 +23,8 @@ export const $: g_project.T.Module<pd.SourceLocation> = {
             'root': api,
             'imports': d({
                 "this": this_(),
+                "foreach": external("res-pareto-foreach"),
+                "typescript": external("res-typescript"),
             }),
         },
     },

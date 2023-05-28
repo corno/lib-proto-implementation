@@ -27,6 +27,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         'synchronous': {
             'interfaces': d({}),
             'algorithms': d({
+                "Number2String": sfunction(externalTypeReference("common", "String"), data(externalTypeReference("common", "Number"))),
                 "Serialize": procedure(data(externalTypeReference("model", "Root")), sExternalInterfaceReference("fp", "Block")),
             }),
         },
