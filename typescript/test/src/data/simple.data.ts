@@ -10,8 +10,13 @@ import {
 
 } from "../../../pub/dist/submodules/unresolved/shorthands"
 
-export const $: g_llimp.T.Source__File<pd.SourceLocation> = ns(
-    {}, {}, {
-        "Foo": array(optional(string()))
-    }
-)
+export const $: g_llimp.T.Source__File<pd.SourceLocation> = {
+    'type': ['current namespaceXXXXX', {
+        'annotation': pd.getLocationInfo(0),
+        'key': "FOO",
+    }],
+    'initialization': ['boolean', {
+        'definition': pd.getLocationInfo(0),
+        'initialization': ['true', null],
+    }]
+}

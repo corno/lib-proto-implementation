@@ -364,6 +364,10 @@ export const $$: A.serialize = ($d) => {
 
         const SourceFile: SourceFile = ($, $i) => {
             $i.nestedLine(($i) => {
+                $i.snippet(`import * as _ from './typesystem'`)
+            })
+            $i.line(``)
+            $i.nestedLine(($i) => {
                 $i.snippet(`const $: `)
                 Type__Selection($.type, $i)
                 $i.snippet(` = `)
@@ -647,7 +651,7 @@ export const $$: A.serialize = ($d) => {
                     break
                 case 'current namespaceXXXXX':
                     pl.ss($, ($) => {
-                        $i.snippet($d.createIdentifier($.key))
+                        $i.snippet(`_.${$d.createIdentifier($.key)}`)
                     })
                     break
                 default: pl.au($[0])
@@ -682,6 +686,6 @@ export const $$: A.serialize = ($d) => {
             })
         }
 
-        return SourceFile
+        return SourceFile($, $i)
     }
 }
