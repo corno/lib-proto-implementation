@@ -11,24 +11,24 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
         "model": imp(),
     }),
 
-        'glossary parameters': d({
-            "Annotation": null,
-        }),
+    'glossary parameters': d({
+        "Annotation": null,
+    }),
 
-        'root': {
-            'namespaces': d({}),
-            'types': d({
-            }),
-        },
-        'asynchronous': {
-            'interfaces': d({}),
-            'algorithms': d({}),
-        },
-        'synchronous': {
-            'interfaces': d({}),
-            'algorithms': d({
-                "Number2String": sfunction(externalTypeReference("common", "String"), data(externalTypeReference("common", "Number"))),
-                "Serialize": procedure(data(externalTypeReference("model", "Root")), sExternalInterfaceReference("fp", "Block")),
-            }),
-        },
+    'root': {
+        'namespaces': d({}),
+        'types': d({
+        }),
+    },
+    'asynchronous': {
+        'interfaces': d({}),
+        'algorithms': d({}),
+    },
+    'synchronous': {
+        'interfaces': d({}),
+        'algorithms': d({
+            "Number2String": sfunction(externalTypeReference("common", "String"), data(externalTypeReference("common", "Number"))),
+            "Serialize": procedure(data(externalTypeReference("model", "Root", { "Annotation": glossaryParameter("Annotation") })), sExternalInterfaceReference("fp", "Block")),
+        }),
+    },
 }

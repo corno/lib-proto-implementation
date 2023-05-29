@@ -99,13 +99,64 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 })
                             )
                         ),
-                        "Address Selection Tail": globalType(
+                        "Local Variables": globalType(
+                            dictionary(group({
+                                "type": prop(component(typeRef("Type Selection"))),
+                                "initialization": prop(component(typeRef("Initialization", true))),
+                            }))
+                        ),
+                        "Aggregated Variable": globalType(
+                            group({
+                                "type": prop(stateGroup({
+                                    //FIXME "parameter": state(group({
+                                    //     "parameter": prop(dictionaryReference(valSel("parameters"), tempExternalTypeSelection("typesystem", "Parameters"))),
+                                    // }), tailSel(s_group("parameter", s_reference(s_group("type"))))),
+                                    "variable stack2": state(group({
+                                        "variable": prop(lookupReference(typeRef("Aggregated Variable", true))),
+                                    })),
+                                    "local": state(group({
+                                        //"variable": prop(dictionaryReference(typeSelection("Local Variables"))),
+                                    })),
+                                })),
+                            })
+                        ),
+                        "Aggregated Variables": globalType(
+                            dictionary(component(typeRef("Aggregated Variable")))
+                        ),
+                        "Variables": globalType(
+                            group({
+                                "local": prop(component(typeRef("Local Variables"))),
+                                "aggregated": prop(component(typeRef("Aggregated Variables")))
+                            })
+                        ),
+                        "Target Selection Tail": globalType(
+                            optional(
+                                group({
+                                    "step": prop(stateGroup({
+                                        "property": state(
+                                            group({
+                                                "group": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("group")))),
+                                                "property": prop(dictionaryReference(externalTypeSelection("typesystem", "Type", t_sg("group")))),
+                                            }),
+                                        ),
+                                    })),
+                                    "tail": prop(component(typeRef("Target Selection Tail", true)))
+                                }),
+                            )
+                        ),
+                        "Target Selection": globalType(
+                            group({
+                                "variable": prop(dictionaryReference(typeSelection("Aggregated Variables"))),
+                                "tail": prop(component(typeRef("Target Selection Tail"))),
+                            })
+                        ),
+                        "Source Selection Tail": globalType(
                             optional(
                                 group({
                                     "step": prop(stateGroup({
                                         "call": state(group({
                                             "address function": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("address function")))),
-                                            // "function": prop(component(typeRef("Address Selection", {
+                                            // "function": prop(component(typeRef("Source Selection", {
                                             //     "namespace": aResolvedValue(valSel("namespace")),
                                             //     "variable stack": aResolvedValue(valSel("variable stack"))
                                             // })), /*constraint tagged union: type === address function*/
@@ -117,13 +168,6 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                                 },
                                                 component(typeRef("Initialization", true))
                                             ))
-                                            // "arguments": prop(constrainedDictionary({
-                                            //     "parameter": dictConstraint(valSel("address function", s_group("declaration", s_group("parameters"))), tempExternalTypeSelection("typesystem", "Function Declaration", t_grp("parameters")))
-                                            // }, component(typeRef("Initialization", {
-                                            //     "expected type": aResolvedValue(valSel("parameter", /*s_group("type")*/)),
-                                            //     "namespace": aResolvedValue(valSel("namespace")),
-                                            //     "variable stack": aResolvedValue(valSel("variable stack")),
-                                            // }))),
                                         })),
                                         "property": state(
                                             group({
@@ -132,30 +176,18 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                             }),
                                         ),
                                     })),
-                                    "tail": prop(component(typeRef("Address Selection Tail", true)))
+                                    "tail": prop(component(typeRef("Source Selection Tail", true)))
                                 }),
                             )
                         ),
-                        "Variables": globalType(
-                            dictionary(group({
-                                "type": prop(stateGroup({
-                                    //FIXME "parameter": state(group({
-                                    //     "parameter": prop(dictionaryReference(valSel("parameters"), tempExternalTypeSelection("typesystem", "Parameters"))),
-                                    // }), tailSel(s_group("parameter", s_reference(s_group("type"))))),
-                                    "variable stack2": state(group({
-                                        "variable": prop(lookupReference(typeRef("Variables", true))),
-                                    })),
-                                    "local": state(group({
-                                        "type": prop(component(typeRef("Type Selection"))),
-                                        "initialization": prop(component(typeRef("Initialization", true))),
-                                    })),
-                                })),
-                            }))
-                        ),
-                        "Address Selection": globalType(
-                            group({
-                                "variable": prop(dictionaryReference(typeSelection("Variables"))),
-                                "tail": prop(component(typeRef("Address Selection Tail"))),
+                        "Source Selection": globalType(
+                            stateGroup({
+                                "context": state(group({})),
+                                "address": state(
+                                    group({
+                                        "variable": prop(dictionaryReference(typeSelection("Aggregated Variables"))),
+                                        "tail": prop(component(typeRef("Source Selection Tail"))),
+                                    }))
                             })
                         ),
 
@@ -165,7 +197,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                             stateGroup({
                                 "initialization": state(component(typeRef("Initialization", true))),
                                 "selection": state(group({
-                                    "selection": prop(component(typeRef("Address Selection"))),
+                                    "selection": prop(component(typeRef("Source Selection"))),
                                     "string": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
                                 })),
                             })
@@ -174,7 +206,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                             stateGroup({
                                 "initialization": state(component(typeRef("String Initialization", true))),
                                 "selection": state(group({
-                                    "selection": prop(component(typeRef("Address Selection"))),
+                                    "selection": prop(component(typeRef("Source Selection"))),
                                     "string": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
                                 })),
                             })
@@ -183,7 +215,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                             stateGroup({
                                 "initialization": state(component(typeRef("Numerical Initialization", true))),
                                 "selection": state(group({
-                                    "selection": prop(component(typeRef("Address Selection"))),
+                                    "selection": prop(component(typeRef("Source Selection"))),
                                     "number": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("number")))),
                                 })),
 
@@ -193,7 +225,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                             stateGroup({
                                 "initialization": state(component(typeRef("Boolean Initialization", true))),
                                 "selection": state(group({
-                                    "selection": prop(component(typeRef("Address Selection"))),
+                                    "selection": prop(component(typeRef("Source Selection"))),
                                     "boolean": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("boolean"))))
                                 })),
                             })
@@ -265,15 +297,15 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                             stateGroup({
                                 // //array
                                 "array literal": state(array(group({
-                                    "array": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("array")))),
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("array")))),
                                     "initialization": prop(component(typeRef("Initialization Or Selection")))
                                 }))),
                                 // //object
-                                "object literal": state(group({
-                                    "group": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("group")))),
+                                "group literal": state(group({
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("group")))),
                                     "properties": prop(constrainedDictionary(
                                         {
-                                            "prop": dictionaryConstraint(externalTypeSelection("typesystem", "Type", t_sg("group")), true)
+                                            "definition": dictionaryConstraint(externalTypeSelection("typesystem", "Type", t_sg("group")), true)
                                         },
                                         component(typeRef("Initialization Or Selection")
                                         )
@@ -295,7 +327,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 //         "namespace": aResolvedValue(valSel("namespace")),
                                 //         "variable stack": aResolvedValue(valSel("variables"))
                                 //     })),
-                                //     "return selection": prop(component(typeRef("Address Selection", {
+                                //     "return selection": prop(component(typeRef("Source Selection", {
                                 //         // "function": aResolvedValue(valSel("out")),
                                 //         // "namespace": aResolvedValue(valSel("namespace")),
                                 //         // "variable stack": aResolvedValue(valSel("variables"))
@@ -338,18 +370,24 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 // //         "variable stack": aResolvedValue(valSel("variables"))
                                 // //     })),
                                 // // })),
+                                "procedure": state(group({
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("procedure")))),
+                                    "temp has parameters": prop(optional(group({}))),
+                                    "variables": prop(component(typeRef("Aggregated Variables"))),
+                                    "block": prop(component(typeRef("Block", true)))
+                                })),
                                 //boolean
                                 "boolean": state(group({
-                                    "boolean": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("boolean")))),
-                                    "x": prop(component(typeRef("Boolean Initialization"))),
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("boolean")))),
+                                    "initialization": prop(component(typeRef("Boolean Initialization"))),
                                 })),
                                 "numerical": state(group({
-                                    "number": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("number")))),
-                                    "x": prop(component(typeRef("Numerical Initialization"))),
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("number")))),
+                                    "initialization": prop(component(typeRef("Numerical Initialization"))),
                                 })),
                                 "string": state(group({
-                                    "number": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
-                                    "x": prop(component(typeRef("String Initialization"))),
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
+                                    "initialization": prop(component(typeRef("String Initialization"))),
                                 })),
                                 // //any
                                 // "conditional": state(group({
@@ -375,10 +413,10 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 // // })),
                                 // // "noSubstitutionTemplateLiteral": empty("NoSubstitutionTemplateLiteral"),
                                 "null": state(group({
-                                    "null": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("null")))),
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("null")))),
                                 })),
                                 // //"parenthesized": state(component(typeRef("Initialization", {})),
-                                // "symbol": state(component(typeRef("Address Selection", { //something that is stored
+                                // "symbol": state(component(typeRef("Source Selection", { //something that is stored
                                 //     "namespace": aResolvedValue(valSel("namespace")),
                                 //     "variable stack": aResolvedValue(valSel("variable stack"))
                                 // })),
@@ -405,30 +443,62 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                         ),
                         "Assign": globalType(
                             group({
-                                "target": prop(component(typeRef("Address Selection"))),
+                                "target": prop(component(typeRef("Target Selection"))),
                                 "initialization": prop(component(typeRef("Initialization Or Selection"))),
                             }),
                         ),
                         "Statements": globalType(
                             array(stateGroup({
                                 "block": state(component(typeRef("Block"))),
+                                "call": state(group({
+                                    "function": prop(component(typeRef("Source Selection"))),
+                                    "context definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("procedure")))),
+                                    "context": prop(component(typeRef("Source Selection"))),
+                                    "arguments": prop(constrainedDictionary(
+                                        {
+                                            "parameter": dictionaryConstraint(externalTypeSelection("typesystem", "Function Declaration", t_grp("parameters")), true)
+                                        },
+                                        component(typeRef("Initialization Or Selection"))
+                                    ))
+                                })),
+                                "change context": state(group({
+                                    "source": prop(component(typeRef("Source Selection"))),
+                                    "block": prop(component(typeRef("Block")))
+                                })),
+
+                                "if": state(group({
+                                    "condition": prop(component(typeRef("Boolean Initialization Or Selection"))),
+                                    "then": prop(component(typeRef("Block"))),
+                                    "else": prop(optional(component(typeRef("Block")))),
+                                })),
+                                "switch": state(group({
+                                    "source": prop(component(typeRef("Source Selection"))),
+                                    "context definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                                    "cases": prop(constrainedDictionary(
+                                        {
+
+                                        },
+                                        component(typeRef("Block"))
+                                    )),
+                                    "default": prop(optional(component(typeRef("Block"))))
+                                })),
                                 "with": state(group({
-                                    "address": prop(component(typeRef("Address Selection"))),
+                                    "source": prop(component(typeRef("Source Selection"))),
                                     "action": prop(stateGroup({
-                                        //         "call": constrainedstate({
-                                        //             "procedure address": optionConstraint(valSel("address", s_component()), "procedure", externalTypeSelection("typesystem", "Type", [tu("procedure")]))
-                                        //         }, group({
-                                        //             "type arguments": prop(component(typeRef("Type Arguments", {
-                                        //                 "type parameters": aResolvedValue(valSel("function")),
+                                        // "call": constrainedstate({
+                                        //     "procedure address": optionConstraint(valSel("address", s_component()), "procedure", externalTypeSelection("typesystem", "Type", [tu("procedure")]))
+                                        // }, group({
+                                        //     "type arguments": prop(component(typeRef("Type Arguments", {
+                                        //         "type parameters": aResolvedValue(valSel("function")),
+                                        //         "namespace": aResolvedValue(valSel("namespace")),
+                                        //     })),
+                                        //         "arguments": prop(constrainedDictionary(
+                                        //             { "parameter": dictConstraint(valSel("function"), externalTypeSelection("typesystem", "Parameters")) },
+                                        //             component(typeRef("Initialization", {
+                                        //                 "expected type": aResolvedValue(valSel("parameter")),
+                                        //                 "variable stack": aResolvedValue(valSel("variable stack")),
                                         //                 "namespace": aResolvedValue(valSel("namespace")),
-                                        //             })),
-                                        //             "arguments": prop(constrainedDictionary(
-                                        //                 { "parameter": dictConstraint(valSel("function"), externalTypeSelection("typesystem", "Parameters")) },
-                                        //                 component(typeRef("Initialization", {
-                                        //                     "expected type": aResolvedValue(valSel("parameter")),
-                                        //                     "variable stack": aResolvedValue(valSel("variable stack")),
-                                        //                     "namespace": aResolvedValue(valSel("namespace")),
-                                        //                 })
+                                        //             })
                                         //             )),
                                         //         })),
                                         "assign": state(component(typeRef("Assign"))),
@@ -441,25 +511,7 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                             "right hand side": prop(component(typeRef("Numerical Initialization Or Selection"))),
                                         })),
 
-                                        //         "switch": constrainedstate({
-                                        //             "tagged union address": optionConstraint(valSel("address", s_component()), "tagged union", typeSelection("Foo"))
-                                        //         }, group({
-                                        //             "cases": prop(constrainedDictionary(
-                                        //                 { "option": dictConstraint(valSel("tagged union address", s_group("options")), externalTypeSelection("typesystem", "Type", [tu("tagged union"), grp("options")])) },
-                                        //                 group({
-                                        //                     "block": prop(component(typeRef("Block", {
-                                        //                         "function": aResolvedValue(valSel("function")),
-                                        //                         "namespace": aResolvedValue(valSel("namespace")),
-                                        //                         "variable stack": aResolvedValue(valSel("variable stack")),
-                                        //                     }))
-                                        //                 })
-                                        //             )),
-                                        //             "default": prop(optional(component(typeRef("Block", {
-                                        //                 "function": aResolvedValue(valSel("function")),
-                                        //                 "namespace": aResolvedValue(valSel("namespace")),
-                                        //                 "variable stack": aResolvedValue(valSel("variable stack")),
-                                        //             }))),
-                                        //         })),
+
                                     }))
                                 })),
                                 // "for": state(group({
@@ -477,11 +529,6 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 //         "variable stack": aResolvedValue(valSel("variable stack")),
                                 //     })),
                                 ///})),
-                                "if": state(group({
-                                    "condition": prop(component(typeRef("Boolean Initialization Or Selection"))),
-                                    "then": prop(component(typeRef("Block"))),
-                                    "else": prop(optional(component(typeRef("Block")))),
-                                })),
                                 // // "labeled": composite("LabeledStatement", group({
                                 // //     "label": member(component(typeRef("identifier")),
                                 // //     "statement": member(component(typeRef("statement")),

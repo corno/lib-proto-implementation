@@ -4,7 +4,7 @@ import { T } from "./datatypes.generated"
 
 import * as g_common from "glo-pareto-common"
 import * as g_fp from "lib-fountain-pen"
-import * as g_model from "../../resolved"
+import * as g_model from "../../unresolved"
 
 export namespace ASYNC {
     
@@ -24,7 +24,7 @@ export namespace SYNC {
         
         
         export namespace P {
-            export type Serialize<GAnnotation> = ($: g_model.T.Root, $i: g_fp.SYNC.I.Block) => void
+            export type Serialize<GAnnotation> = ($: g_model.T.Root<GAnnotation>, $i: g_fp.SYNC.I.Block) => void
         }
     }
 }
