@@ -983,6 +983,43 @@ export namespace N {
                         export namespace T {}
                     }
                     
+                    export namespace tagged_$_$union_$_$literal {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace state {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace value_$_$function {
                         
                         export namespace N {
@@ -2735,6 +2772,34 @@ export namespace T {
             readonly 'source': T.Source__Selection<GAnnotation>
         }
         
+        export namespace tagged__union__literal {
+            
+            export type definition<GAnnotation> = GAnnotation
+            
+            export type initialization<GAnnotation> = T.Initialization__Or__Selection<GAnnotation>
+            
+            export namespace state {
+                
+                export type annotation<GAnnotation> = GAnnotation
+                
+                export type key<GAnnotation> = string
+            }
+            
+            export type state<GAnnotation> = {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
+        }
+        
+        export type tagged__union__literal<GAnnotation> = {
+            readonly 'definition': GAnnotation
+            readonly 'initialization': T.Initialization__Or__Selection<GAnnotation>
+            readonly 'state': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
+        }
+        
         export namespace value__function {
             
             export type definition<GAnnotation> = GAnnotation
@@ -2842,6 +2907,14 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection<GAnnotation>]
             readonly 'definition': GAnnotation
             readonly 'source': T.Source__Selection<GAnnotation>
+        }]
+        | ['tagged union literal', {
+            readonly 'definition': GAnnotation
+            readonly 'initialization': T.Initialization__Or__Selection<GAnnotation>
+            readonly 'state': {
+                readonly 'annotation': GAnnotation
+                readonly 'key': string
+            }
         }]
         | ['value function', {
             readonly 'definition': GAnnotation

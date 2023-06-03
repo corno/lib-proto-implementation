@@ -316,7 +316,7 @@ export const $$: A.serialize = ($d) => {
                     break
                 case 'implement me':
                     pl.ss($, ($) => {
-                        $i.snippet(`_pv.implementMe(${$d.createQuotedString($)})`)
+                        $i.snippet(`_pd.implementMe(${$d.createQuotedString($)})`)
                     })
                     break
                 case 'null':
@@ -379,6 +379,14 @@ export const $$: A.serialize = ($d) => {
                             })
                         })
                         $i.snippet(`})`)
+                    })
+                    break
+
+                case 'tagged union literal':
+                    pl.ss($, ($) => {
+                        $i.snippet(`[${$d.createApostrophedString($.state.key)}, `)
+                        Initialization__Or__Selection($.initialization,$p, $i)
+                        $i.snippet(`]`)
                     })
                     break
                 case 'value function':

@@ -405,6 +405,11 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                     "variables": prop(component(typeRef("Aggregated Variables"))),
                                     "block": prop(component(typeRef("Block", true)))
                                 })),
+                                "tagged union literal": state(group({
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                                    "state": prop(dictionaryReference(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                                    "initialization": prop(component(typeRef("Initialization Or Selection"))),
+                                })),
                                 "string": state(group({
                                     "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
                                     "initialization": prop(component(typeRef("String Initialization"))),

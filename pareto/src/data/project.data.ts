@@ -26,6 +26,7 @@ export const $: g_project.T.Project<pd.SourceLocation | null> = {
         "lib-proto-typesystem": null,
         "res-pareto-resolve": null,
         "lib-fountain-pen": null,
+        "lib-typescript": null,
     }),
     'type': ['library', {
         'main': {

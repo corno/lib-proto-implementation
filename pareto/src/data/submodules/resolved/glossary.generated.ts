@@ -698,6 +698,60 @@ export const $: g_glossary.T.Glossary<null> = {
                             }]],
                         },
                     })],
+                    "tagged union literal": <g_glossary.T.Type<null>>['group', d({
+                        "definition": {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
+                                'context': ['import', {
+                                    'glossary': {
+                                        'glossary':{
+                                            'annotation': null,
+                                            'key': "typesystem",
+                                        },
+                                        'glossary arguments': d({}),
+                                    },
+                                }],
+                                'typeXX': "Type",
+                                'tailXX': a([
+                                    "tagged union",
+                                ]),
+                                'type arguments': d({}),
+                            }]],
+                        },
+                        "initialization": {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
+                                'context': ['local', null],
+                                'typeXX': "Initialization Or Selection",
+                                'tailXX': a([]),
+                                'type arguments': d({}),
+                            }]],
+                        },
+                        "state": {
+                            'type': <g_glossary.T.Type<null>>['group', d({
+                                "key": {
+                                    'type': <g_glossary.T.Type<null>>['string', null],
+                                },
+                                "referent": {
+                                    'type': <g_glossary.T.Type<null>>['reference', ['type', {
+                                        'context': ['import', {
+                                            'glossary': {
+                                                'glossary':{
+                                                    'annotation': null,
+                                                    'key': "typesystem",
+                                                },
+                                                'glossary arguments': d({}),
+                                            },
+                                        }],
+                                        'typeXX': "Type",
+                                        'tailXX': a([
+                                            "tagged union",
+                                            "D",
+                                        ]),
+                                        'type arguments': d({}),
+                                    }]],
+                                },
+                            })],
+                        },
+                    })],
                     "value function": <g_glossary.T.Type<null>>['group', d({
                         "definition": {
                             'type': <g_glossary.T.Type<null>>['reference', ['type', {
@@ -2215,6 +2269,28 @@ export const $: g_glossary.T.Glossary<null> = {
                                                 'namespaces': d({}),
                                             },
                                             "source": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                        }),
+                                    },
+                                }),
+                            },
+                            "tagged union literal": {
+                                'types': d({}),
+                                'namespaces': d({
+                                    "G": {
+                                        'types': d({}),
+                                        'namespaces': d({
+                                            "definition": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "initialization": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "state": {
                                                 'types': d({}),
                                                 'namespaces': d({}),
                                             },

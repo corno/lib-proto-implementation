@@ -986,6 +986,43 @@ export namespace N {
                         export namespace T {}
                     }
                     
+                    export namespace tagged_$_$union_$_$literal {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace state {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace value_$_$function {
                         
                         export namespace N {
@@ -2776,6 +2813,44 @@ export namespace T {
             readonly 'source': T.Source__Selection
         }
         
+        export namespace tagged__union__literal {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.tagged__union
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export namespace state {
+                
+                export type key = string
+                
+                export namespace referent {
+                    
+                    export type O = g_typesystem.T.Type.tagged__union.D
+                }
+                
+                export type referent = [ false ] | [ true, g_typesystem.T.Type.tagged__union.D]
+            }
+            
+            export type state = {
+                readonly 'key': string
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D]
+            }
+        }
+        
+        export type tagged__union__literal = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'state': {
+                readonly 'key': string
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D]
+            }
+        }
+        
         export namespace value__function {
             
             export namespace definition {
@@ -2881,6 +2956,14 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection]
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.tagged__union]
             readonly 'source': T.Source__Selection
+        }]
+        | ['tagged union literal', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'state': {
+                readonly 'key': string
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Type.tagged__union.D]
+            }
         }]
         | ['value function', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.procedure]
