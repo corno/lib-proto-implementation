@@ -509,28 +509,65 @@ export namespace N {
                         
                         export namespace N {
                             
-                            export namespace A {
+                            export namespace G {
                                 
                                 export namespace N {
                                     
-                                    export namespace G {
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
                                         
                                         export namespace N {
                                             
-                                            export namespace definition {
-                                                
-                                                export namespace N {}
-                                                
-                                                export namespace T {}
-                                            }
-                                            
-                                            export namespace initialization {
+                                            export namespace A {
                                                 
                                                 export namespace N {}
                                                 
                                                 export namespace T {}
                                             }
                                         }
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace array_$_$map {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace source {
+                                        
+                                        export namespace N {}
                                         
                                         export namespace T {}
                                     }
@@ -559,6 +596,111 @@ export namespace N {
                                     }
                                     
                                     export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace change_$_$context {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace source {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace dictionary_$_$literal {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace D {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace dictionary_$_$map {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace source {
                                         
                                         export namespace N {}
                                         
@@ -611,6 +753,13 @@ export namespace N {
                         export namespace T {}
                     }
                     
+                    export namespace implement_$_$me {
+                        
+                        export namespace N {}
+                        
+                        export namespace T {}
+                    }
+                    
                     export namespace _$lnull {
                         
                         export namespace N {
@@ -650,6 +799,29 @@ export namespace N {
                                     }
                                     
                                     export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace optional {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
                                         
                                         export namespace N {}
                                         
@@ -753,6 +925,156 @@ export namespace N {
                         
                         export namespace T {}
                     }
+                    
+                    export namespace _$lswitch {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace cases {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace D {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace _$ldefault {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace O {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace source {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace value_$_$function {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace definition {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace temp_$_$has_$_$parameters {
+                                        
+                                        export namespace N {
+                                            
+                                            export namespace O {
+                                                
+                                                export namespace N {
+                                                    
+                                                    export namespace G {
+                                                        
+                                                        export namespace N {}
+                                                        
+                                                        export namespace T {}
+                                                    }
+                                                }
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace variables {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
+                    
+                    export namespace variables {
+                        
+                        export namespace N {
+                            
+                            export namespace G {
+                                
+                                export namespace N {
+                                    
+                                    export namespace initialization {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                    
+                                    export namespace variables {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
+                                }
+                                
+                                export namespace T {}
+                            }
+                        }
+                        
+                        export namespace T {}
+                    }
                 }
                 
                 export namespace T {}
@@ -786,13 +1108,6 @@ export namespace N {
                                 export namespace N {
                                     
                                     export namespace selection {
-                                        
-                                        export namespace N {}
-                                        
-                                        export namespace T {}
-                                    }
-                                    
-                                    export namespace _$lstring {
                                         
                                         export namespace N {}
                                         
@@ -1058,21 +1373,29 @@ export namespace N {
         
         export namespace N {
             
-            export namespace TU {
+            export namespace G {
                 
                 export namespace N {
                     
-                    export namespace address {
+                    export namespace start {
                         
                         export namespace N {
                             
-                            export namespace G {
+                            export namespace TU {
                                 
                                 export namespace N {
                                     
-                                    export namespace tail {
+                                    export namespace context {
                                         
-                                        export namespace N {}
+                                        export namespace N {
+                                            
+                                            export namespace G {
+                                                
+                                                export namespace N {}
+                                                
+                                                export namespace T {}
+                                            }
+                                        }
                                         
                                         export namespace T {}
                                     }
@@ -1092,17 +1415,9 @@ export namespace N {
                         export namespace T {}
                     }
                     
-                    export namespace context {
+                    export namespace tail {
                         
-                        export namespace N {
-                            
-                            export namespace G {
-                                
-                                export namespace N {}
-                                
-                                export namespace T {}
-                            }
-                        }
+                        export namespace N {}
                         
                         export namespace T {}
                     }
@@ -2165,28 +2480,45 @@ export namespace T {
         
         export namespace array__literal {
             
-            export namespace A {
+            export namespace definition {
                 
-                export namespace definition {
-                    
-                    export type O = g_typesystem.T.Type.array
-                }
-                
-                export type definition = [ false ] | [ true, g_typesystem.T.Type.array]
-                
-                export type initialization = T.Initialization__Or__Selection
+                export type O = g_typesystem.T.Type.array
             }
             
-            export type A = {
-                readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.array]
-                readonly 'initialization': T.Initialization__Or__Selection
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.array]
+            
+            export namespace initialization {
+                
+                export type A = T.Initialization__Or__Selection
             }
+            
+            export type initialization = pt.Array<T.Initialization__Or__Selection>
         }
         
-        export type array__literal = pt.Array<{
+        export type array__literal = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.array]
+            readonly 'initialization': pt.Array<T.Initialization__Or__Selection>
+        }
+        
+        export namespace array__map {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.array
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.array]
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export type source = T.Source__Selection
+        }
+        
+        export type array__map = {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.array]
             readonly 'initialization': T.Initialization__Or__Selection
-        }>
+            readonly 'source': T.Source__Selection
+        }
         
         export namespace _lboolean {
             
@@ -2203,6 +2535,60 @@ export namespace T {
         export type _lboolean = {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lboolean]
             readonly 'initialization': T.Boolean__Initialization
+        }
+        
+        export namespace change__context {
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export type source = T.Source__Selection
+        }
+        
+        export type change__context = {
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'source': T.Source__Selection
+        }
+        
+        export namespace dictionary__literal {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.dictionary
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            
+            export namespace initialization {
+                
+                export type D = T.Initialization__Or__Selection
+            }
+            
+            export type initialization = pt.Dictionary<T.Initialization__Or__Selection>
+        }
+        
+        export type dictionary__literal = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            readonly 'initialization': pt.Dictionary<T.Initialization__Or__Selection>
+        }
+        
+        export namespace dictionary__map {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.dictionary
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export type source = T.Source__Selection
+        }
+        
+        export type dictionary__map = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'source': T.Source__Selection
         }
         
         export namespace group__literal {
@@ -2263,6 +2649,8 @@ export namespace T {
             }>
         }
         
+        export type implement__me = string
+        
         export namespace _lnull {
             
             export namespace definition {
@@ -2292,6 +2680,20 @@ export namespace T {
         export type numerical = {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lnumber]
             readonly 'initialization': T.Numerical__Initialization
+        }
+        
+        export namespace optional {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.optional
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.optional]
+        }
+        
+        export type optional = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.optional]
         }
         
         export namespace procedure {
@@ -2340,16 +2742,109 @@ export namespace T {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lstring]
             readonly 'initialization': T.String__Initialization
         }
+        
+        export namespace _lswitch {
+            
+            export namespace cases {
+                
+                export type D = T.Initialization__Or__Selection
+            }
+            
+            export type cases = pt.Dictionary<T.Initialization__Or__Selection>
+            
+            export namespace _ldefault {
+                
+                export type O = T.Initialization__Or__Selection
+            }
+            
+            export type _ldefault = [ false ] | [ true, T.Initialization__Or__Selection]
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.tagged__union
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            
+            export type source = T.Source__Selection
+        }
+        
+        export type _lswitch = {
+            readonly 'cases': pt.Dictionary<T.Initialization__Or__Selection>
+            readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection]
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            readonly 'source': T.Source__Selection
+        }
+        
+        export namespace value__function {
+            
+            export namespace definition {
+                
+                export type O = g_typesystem.T.Type.procedure
+            }
+            
+            export type definition = [ false ] | [ true, g_typesystem.T.Type.procedure]
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export namespace temp__has__parameters {
+                
+                export namespace O {}
+                
+                export type O = null
+            }
+            
+            export type temp__has__parameters = [ false ] | [ true, null]
+            
+            export type variables = T.Aggregated__Variables
+        }
+        
+        export type value__function = {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.procedure]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'temp has parameters': [ false ] | [ true, null]
+            readonly 'variables': T.Aggregated__Variables
+        }
+        
+        export namespace variables {
+            
+            export type initialization = T.Initialization__Or__Selection
+            
+            export type variables = T.Variables
+        }
+        
+        export type variables = {
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'variables': T.Variables
+        }
     }
     
     export type Initialization = 
-        | ['array literal', pt.Array<{
+        | ['array literal', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.array]
+            readonly 'initialization': pt.Array<T.Initialization__Or__Selection>
+        }]
+        | ['array map', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.array]
             readonly 'initialization': T.Initialization__Or__Selection
-        }>]
+            readonly 'source': T.Source__Selection
+        }]
         | ['boolean', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lboolean]
             readonly 'initialization': T.Boolean__Initialization
+        }]
+        | ['change context', {
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'source': T.Source__Selection
+        }]
+        | ['dictionary literal', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            readonly 'initialization': pt.Dictionary<T.Initialization__Or__Selection>
+        }]
+        | ['dictionary map', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.dictionary]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'source': T.Source__Selection
         }]
         | ['group literal', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.group]
@@ -2360,12 +2855,16 @@ export namespace T {
                 readonly 'content': T.Initialization__Or__Selection
             }>
         }]
+        | ['implement me', string]
         | ['null', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lnull]
         }]
         | ['numerical', {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lnumber]
             readonly 'initialization': T.Numerical__Initialization
+        }]
+        | ['optional', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.optional]
         }]
         | ['procedure', {
             readonly 'block': T.Block
@@ -2377,6 +2876,22 @@ export namespace T {
             readonly 'definition': [ false ] | [ true, g_typesystem.T.Type._lstring]
             readonly 'initialization': T.String__Initialization
         }]
+        | ['switch', {
+            readonly 'cases': pt.Dictionary<T.Initialization__Or__Selection>
+            readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection]
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.tagged__union]
+            readonly 'source': T.Source__Selection
+        }]
+        | ['value function', {
+            readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.procedure]
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'temp has parameters': [ false ] | [ true, null]
+            readonly 'variables': T.Aggregated__Variables
+        }]
+        | ['variables', {
+            readonly 'initialization': T.Initialization__Or__Selection
+            readonly 'variables': T.Variables
+        }]
     
     export namespace Initialization__Or__Selection {
         
@@ -2385,18 +2900,10 @@ export namespace T {
         export namespace selection {
             
             export type selection = T.Source__Selection
-            
-            export namespace _lstring {
-                
-                export type O = g_typesystem.T.Type._lstring
-            }
-            
-            export type _lstring = [ false ] | [ true, g_typesystem.T.Type._lstring]
         }
         
         export type selection = {
             readonly 'selection': T.Source__Selection
-            readonly 'string': [ false ] | [ true, g_typesystem.T.Type._lstring]
         }
     }
     
@@ -2404,7 +2911,6 @@ export namespace T {
         | ['initialization', T.Initialization]
         | ['selection', {
             readonly 'selection': T.Source__Selection
-            readonly 'string': [ false ] | [ true, g_typesystem.T.Type._lstring]
         }]
     
     export namespace Local__Variables {
@@ -2524,9 +3030,11 @@ export namespace T {
     
     export namespace Source__Selection {
         
-        export namespace address {
+        export namespace start {
             
-            export type tail = T.Source__Selection__Tail
+            export namespace context {}
+            
+            export type context = null
             
             export namespace variable {
                 
@@ -2546,28 +3054,25 @@ export namespace T {
             }
         }
         
-        export type address = {
-            readonly 'tail': T.Source__Selection__Tail
-            readonly 'variable': {
+        export type start = 
+            | ['context', null]
+            | ['variable', {
                 readonly 'key': string
                 readonly 'referent': [ false ] | [ true, T.Aggregated__Variables.D]
-            }
-        }
+            }]
         
-        export namespace context {}
-        
-        export type context = null
+        export type tail = T.Source__Selection__Tail
     }
     
-    export type Source__Selection = 
-        | ['address', {
-            readonly 'tail': T.Source__Selection__Tail
-            readonly 'variable': {
+    export type Source__Selection = {
+        readonly 'start': 
+            | ['context', null]
+            | ['variable', {
                 readonly 'key': string
                 readonly 'referent': [ false ] | [ true, T.Aggregated__Variables.D]
-            }
-        }]
-        | ['context', null]
+            }]
+        readonly 'tail': T.Source__Selection__Tail
+    }
     
     export namespace Source__Selection__Tail {
         
@@ -3261,15 +3766,15 @@ export namespace T {
                 
                 export namespace referent {
                     
-                    export type O = g_typesystem.T.Local__Namespace.namespaces.D
+                    export type O = g_typesystem.T.Namespace.namespaces.D
                 }
                 
-                export type referent = [ false ] | [ true, g_typesystem.T.Local__Namespace.namespaces.D]
+                export type referent = [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D]
             }
             
             export type namespacex = {
                 readonly 'key': string
-                readonly 'referent': [ false ] | [ true, g_typesystem.T.Local__Namespace.namespaces.D]
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D]
             }
             
             export type selection = T.Type__Selection
@@ -3278,7 +3783,7 @@ export namespace T {
         export type child__namespace = {
             readonly 'namespacex': {
                 readonly 'key': string
-                readonly 'referent': [ false ] | [ true, g_typesystem.T.Local__Namespace.namespaces.D]
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D]
             }
             readonly 'selection': T.Type__Selection
         }
@@ -3289,15 +3794,15 @@ export namespace T {
             
             export namespace referent {
                 
-                export type O = g_typesystem.T.Local__Namespace.types.D
+                export type O = g_typesystem.T.Namespace.types.D
             }
             
-            export type referent = [ false ] | [ true, g_typesystem.T.Local__Namespace.types.D]
+            export type referent = [ false ] | [ true, g_typesystem.T.Namespace.types.D]
         }
         
         export type current__namespaceXXXXX = {
             readonly 'key': string
-            readonly 'referent': [ false ] | [ true, g_typesystem.T.Local__Namespace.types.D]
+            readonly 'referent': [ false ] | [ true, g_typesystem.T.Namespace.types.D]
         }
     }
     
@@ -3305,13 +3810,13 @@ export namespace T {
         | ['child namespace', {
             readonly 'namespacex': {
                 readonly 'key': string
-                readonly 'referent': [ false ] | [ true, g_typesystem.T.Local__Namespace.namespaces.D]
+                readonly 'referent': [ false ] | [ true, g_typesystem.T.Namespace.namespaces.D]
             }
             readonly 'selection': T.Type__Selection
         }]
         | ['current namespaceXXXXX', {
             readonly 'key': string
-            readonly 'referent': [ false ] | [ true, g_typesystem.T.Local__Namespace.types.D]
+            readonly 'referent': [ false ] | [ true, g_typesystem.T.Namespace.types.D]
         }]
     
     export namespace Variables {

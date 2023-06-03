@@ -7,7 +7,7 @@ import * as g_out_typesystem from "lib-proto-typesystem/dist/submodules/resolved
 export type Assign<Annotation> = (
     $: g_in.T.Assign<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Assign
@@ -15,7 +15,7 @@ export type Assign<Annotation> = (
 export type Block<Annotation> = (
     $: g_in.T.Block<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
         'type parameters': pt.OptionalValue<g_out_typesystem.T.Type__Parameters>,
     },
@@ -24,7 +24,7 @@ export type Block<Annotation> = (
 export type Boolean__Initialization<Annotation> = (
     $: g_in.T.Boolean__Initialization<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Boolean__Initialization
@@ -32,7 +32,7 @@ export type Boolean__Initialization<Annotation> = (
 export type Boolean__Initialization__Or__Selection<Annotation> = (
     $: g_in.T.Boolean__Initialization__Or__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Boolean__Initialization__Or__Selection
@@ -41,7 +41,7 @@ export type Initialization<Annotation> = (
     $: g_in.T.Initialization<Annotation>,
     $p: {
         'expected type': pt.OptionalValue<g_out_typesystem.T.Type>,
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Initialization
@@ -50,7 +50,7 @@ export type Initialization__Or__Selection<Annotation> = (
     $: g_in.T.Initialization__Or__Selection<Annotation>,
     $p: {
         'expected type': pt.OptionalValue<g_out_typesystem.T.Type>,
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Initialization__Or__Selection
@@ -58,7 +58,7 @@ export type Initialization__Or__Selection<Annotation> = (
 export type Numerical__Initialization<Annotation> = (
     $: g_in.T.Numerical__Initialization<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Numerical__Initialization
@@ -66,7 +66,7 @@ export type Numerical__Initialization<Annotation> = (
 export type Numerical__Initialization__Or__Selection<Annotation> = (
     $: g_in.T.Numerical__Initialization__Or__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Numerical__Initialization__Or__Selection
@@ -78,7 +78,7 @@ export type Source__File<Annotation> = (
 export type Source__Selection<Annotation> = (
     $: g_in.T.Source__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>
         'variable stack': pt.OptionalValue<g_out.T.Variables>
     },
 ) => g_out.T.Source__Selection
@@ -87,7 +87,7 @@ export type Source__Selection__Tail<Annotation> = (
     $: g_in.T.Source__Selection__Tail<Annotation>,
     $p: {
         'current address': pt.OptionalValue<g_out_typesystem.T.Type>,
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Source__Selection__Tail
@@ -95,7 +95,7 @@ export type Source__Selection__Tail<Annotation> = (
 export type Statements<Annotation> = (
     $: g_in.T.Statements<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
         'type parameters': pt.OptionalValue<g_out_typesystem.T.Type__Parameters>,
     },
@@ -104,7 +104,7 @@ export type Statements<Annotation> = (
 export type String__Initialization<Annotation> = (
     $: g_in.T.String__Initialization<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.String__Initialization
@@ -112,7 +112,7 @@ export type String__Initialization<Annotation> = (
 export type String__Initialization__Or__Selection<Annotation> = (
     $: g_in.T.String__Initialization__Or__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.String__Initialization__Or__Selection
@@ -120,7 +120,7 @@ export type String__Initialization__Or__Selection<Annotation> = (
 export type Target__Selection<Annotation> = (
     $: g_in.T.Target__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>
         'variable stack': pt.OptionalValue<g_out.T.Variables>
     },
 ) => g_out.T.Target__Selection
@@ -129,7 +129,7 @@ export type Target__Selection__Tail<Annotation> = (
     $: g_in.T.Target__Selection__Tail<Annotation>,
     $p: {
         'current address': pt.OptionalValue<g_out_typesystem.T.Type>,
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'variable stack': pt.OptionalValue<g_out.T.Variables>,
     },
 ) => g_out.T.Target__Selection__Tail
@@ -138,7 +138,7 @@ export type Target__Selection__Tail<Annotation> = (
 export type Type__Arguments<Annotation> = (
     $: g_in.T.Type__Arguments<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
         'type parameters': pt.OptionalValue<g_out_typesystem.T.Type__Parameters>,
     },
 ) => g_out.T.Type__Arguments
@@ -146,13 +146,13 @@ export type Type__Arguments<Annotation> = (
 export type Type__Selection<Annotation> = (
     $: g_in.T.Type__Selection<Annotation>,
     $p: {
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
     },
 ) => g_out.T.Type__Selection
 
 export type Variables<Annotation> = (
     $: g_in.T.Variables<Annotation>,
-    $v_namespace: pt.OptionalValue<g_out_typesystem.T.Local__Namespace>,
+    $v_namespace: pt.OptionalValue<g_out_typesystem.T.Namespace>,
     $v_variable__stack: pt.OptionalValue<g_out.T.Variables>,
 ) => g_out.T.Variables
 

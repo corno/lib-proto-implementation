@@ -44,17 +44,24 @@ export const $: g_pareto_lang_data.T.Type__Library<pd.SourceLocation> = typeLibr
                 "parameters": prop(dictionary(component(typeRef("Type", true)))),
             })
         ),
-        "Namespace 2": globalType(
-            stateGroup({
-                "parent sibling": state(group({
-                    "namespace": prop(lookupReference(typeRef("Namespace 2", true))),
-                })),
-                "local": state(component(typeRef("Local Namespace", true))),
+        "Imports": globalType(
+            dictionary(component(typeRef("Import", true)))
+        ),
+        "Nested Namespace": globalType(
+            group({
+                "imports": prop(component(typeRef("Imports"))),
+                "namespace": prop(component(typeRef("Namespace", true))),
             })
         ),
-        "Local Namespace": globalType(
+        "Import": globalType(
+            stateGroup({
+                "sibling": state(lookupReference(typeRef("Nested Namespace"))),
+                "parent import": state(dictionaryReference(typeSelection("Imports"))),
+            })
+        ),
+        "Namespace": globalType(
             group({
-                "namespaces": prop(dictionary(component(typeRef("Namespace 2")))),
+                "namespaces": prop(dictionary(component(typeRef("Nested Namespace")))),
                 "parameters": prop(component(typeRef("Type Parameters"))),
                 "types": prop(dictionary(component(typeRef("Type", true)))),
             }),
@@ -73,6 +80,7 @@ export const $: g_pareto_lang_data.T.Type__Library<pd.SourceLocation> = typeLibr
                     "type": prop(component(typeRef("Type", true))),
                     "mutable": prop(optional(group({}))),
                 }))),
+                "lookup": state(component(typeRef("Type", true))),
                 "null": state(group({})),
                 "number": state(group({})),
                 "optional": state(component(typeRef("Type", true))),
@@ -84,8 +92,8 @@ export const $: g_pareto_lang_data.T.Type__Library<pd.SourceLocation> = typeLibr
                 "type parameter": state(dictionaryReference(typeSelection("Aggregated Type Parameters"))),
                 "type reference": state(stateGroup({
                     "external": state(group({
-                        "namespaces": prop(component(typeRef("Namespace Selection", true))),
-                        "type": prop(dictionaryReference(typeSelection("Local Namespace", t_grp("types")))),
+                        "namespace path": prop(component(typeRef("Namespace Selection", true))),
+                        "type": prop(dictionaryReference(typeSelection("Namespace", t_grp("types")))),
 
                     })),
                     "sibling": state(lookupReference(typeRef("Type", true))),
@@ -105,11 +113,25 @@ export const $: g_pareto_lang_data.T.Type__Library<pd.SourceLocation> = typeLibr
                 //link to parameter
                 "type": prop(component(typeRef("Type", true))),
             }))),
+        "Namespace Selection Tail": globalType(
+            group({
+                "namespace": prop(dictionaryReference(typeSelection("Namespace", t_grp("namespaces")))),
+                "arguments": prop(component(typeRef("Type Arguments"))),
+                "tail": prop(optional(component(typeRef("Namespace Selection Tail", true))))
+            })
+        ),
         "Namespace Selection": globalType(
             group({
-                "namespace": prop(dictionaryReference(typeSelection("Local Namespace", t_grp("namespaces")))),
-                "arguments": prop(component(typeRef("Type Arguments"))),
-                "tail": prop(optional(component(typeRef("Namespace Selection", true))))
+                "start": prop(stateGroup({
+                    "import": state(group({
+                        "namespace": prop(dictionaryReference(typeSelection("Imports"))),
+                        "arguments": prop(component(typeRef("Type Arguments"))),
+                        "tail": prop(optional(component(typeRef("Namespace Selection Tail"))))
+                    })),
+                    "local": state(group({
+                        "namespace": prop(component(typeRef("Namespace Selection Tail"))),
+                    })),
+                })),
             })
         ),
         // "Namespace Selection": globalType(
@@ -119,7 +141,7 @@ export const $: g_pareto_lang_data.T.Type__Library<pd.SourceLocation> = typeLibr
         //     })
         // ),
         "Root": globalType(
-            component(typeRef("Local Namespace")),
+            component(typeRef("Namespace")),
         )
     }
 )

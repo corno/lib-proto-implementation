@@ -26,11 +26,17 @@ export const $$: A.serialize = ($d) => {
         ) => void
         type Initialization = <Annotation> (
             $: g_in.T.Initialization<Annotation>,
+            $p: {
+                'wrap group literal': boolean,
+            },
             $i: g_fp.SYNC.I.Line,
         ) => void
 
         type Initialization__Or__Selection = <Annotation> (
             $: g_in.T.Initialization__Or__Selection<Annotation>,
+            $p: {
+                'wrap group literal': boolean,
+            },
             $i: g_fp.SYNC.I.Line,
         ) => void
 
@@ -210,11 +216,11 @@ export const $$: A.serialize = ($d) => {
         }
 
 
-        const Initialization__Or__Selection: Initialization__Or__Selection = ($, $i) => {
+        const Initialization__Or__Selection: Initialization__Or__Selection = ($, $p, $i) => {
             switch ($[0]) {
                 case 'initialization':
                     pl.ss($, ($) => {
-                        Initialization($, $i)
+                        Initialization($, $p, $i)
                     })
                     break
                 case 'selection':
@@ -226,20 +232,60 @@ export const $$: A.serialize = ($d) => {
             }
         }
 
-        const Initialization: Initialization = ($, $i) => {
+        const Initialization: Initialization = ($, $p, $i) => {
             switch ($[0]) {
                 case 'array literal':
                     pl.ss($, ($) => {
-                        $i.snippet(`[`)
-                        $.__forEach(($) => {
-                            Initialization__Or__Selection($.initialization, $i)
+                        $i.snippet(`_pm.wrapRawArray([`)
+                        $.initialization.__forEach(($) => {
+                            Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
                         })
-                        $i.snippet(`]`)
+                        $i.snippet(`])`)
+                    })
+                    break
+                case 'array map':
+                    pl.ss($, ($) => {
+                        Source__Selection($.source, $i)
+
+                        $i.snippet(`.map(($) => `)
+                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
+                        $i.snippet(`)`)
                     })
                     break
                 case 'boolean':
                     pl.ss($, ($) => {
                         Boolean__Initialization($.initialization, $i)
+                    })
+                    break
+                case 'change context':
+                    pl.ss($, ($) => {
+                        $i.snippet(`_pl.cc(`)
+                        Source__Selection($.source, $i)
+                        $i.snippet(`, ($) => `)
+                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
+                        $i.snippet(`)`)
+                    })
+                    break
+                case 'dictionary literal':
+                    pl.ss($, ($) => {
+                        $i.snippet(`_pm.wrapRawDictionary({`)
+                        $i.indent(($i) => {
+                            $.initialization.dictionary.__mapWithKey(($, key) => {
+                                $i.nestedLine(($i) => {
+                                    $i.snippet(`${$d.createApostrophedString(key)}:`)
+                                    Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
+                                })
+                            })
+                        })
+                        $i.snippet(`})`)
+                    })
+                    break
+                case 'dictionary map':
+                    pl.ss($, ($) => {
+                        Source__Selection($.source, $i)
+                        $i.snippet(`.map(($) => `)
+                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
+                        $i.snippet(`)`)
                     })
                     break
                 case 'group literal':
@@ -251,21 +297,26 @@ export const $$: A.serialize = ($d) => {
                                     $i.snippet(`null`)
                                 },
                                 'onNotEmpty': ($c) => {
-                                    $i.snippet(`{`)
+
+                                    $i.snippet(`${$p['wrap group literal'] ? `(` : ``}{`)
                                     $i.indent(($i) => {
                                         $c(($) => {
                                             $i.nestedLine(($i) => {
                                                 $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                Initialization__Or__Selection($.value.content, $i)
+                                                Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
                                                 $i.snippet(`,`)
                                             })
                                         })
                                     })
-                                    $i.snippet(`}`)
+                                    $i.snippet(`}${$p['wrap group literal'] ? `)` : ``}`)
                                 }
                             }
                         )
-                        $i.snippet(`{`)
+                    })
+                    break
+                case 'implement me':
+                    pl.ss($, ($) => {
+                        $i.snippet(`_pv.implementMe(${$d.createQuotedString($)})`)
                     })
                     break
                 case 'null':
@@ -278,15 +329,75 @@ export const $$: A.serialize = ($d) => {
                         Numerical__Initialization($.initialization, $i)
                     })
                     break
+                case 'optional':
+                    pl.ss($, ($) => {
+                        $i.snippet(`FIXOPTIONAL`)
+                        //Numerical__Initialization($.initialization, $i)
+                    })
+                    break
                 case 'procedure':
                     pl.ss($, ($) => {
-                        $i.snippet(`($, ${$['temp has parameters'] ? `, $p` : ``}) => `)
+                        $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
                         Block($.block, $i)
                     })
                     break
                 case 'string':
                     pl.ss($, ($) => {
                         String__Initialization($.initialization, $i)
+                    })
+                    break
+                case 'switch':
+                    pl.ss($, ($) => {
+                        $i.snippet(`_pl.cc(`)
+                        Source__Selection($.source, $i)
+                        $i.snippet(`, ($) => {`)
+                        $i.indent(($i) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`switch ($[0]) {`)
+                                $i.indent(($i) => {
+                                    $.cases.dictionary.__forEach(() => false, ($, key) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`case ${$d.createApostrophedString(key)}: return _pl.ss($, ($) => `)
+                                            Initialization__Or__Selection($, { 'wrap group literal': true }, $i)
+                                            $i.snippet(`)`)
+                                        })
+                                    })
+                                    $i.nestedLine(($i) => {
+                                        $i.snippet(`default: return `)
+                                        pl.optional(
+                                            $.default,
+                                            ($) => {
+                                                Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
+                                            },
+                                            () => {
+                                                $i.snippet(`_pl.au($[0])`)
+                                            }
+                                        )
+                                    })
+                                })
+                                $i.snippet(`}`)
+                            })
+                        })
+                        $i.snippet(`})`)
+                    })
+                    break
+                case 'value function':
+                    pl.ss($, ($) => {
+                        $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
+                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
+                    })
+                    break
+                case 'variables':
+                    pl.ss($, ($) => {
+                        $i.snippet(`_pl.cc($, ($) => {`)
+                        $i.indent(($i) => {
+                            Variables($.variables, $i)
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`return `)
+                                Initialization__Or__Selection($.initialization, { 'wrap group literal': false }, $i)
+                            })
+                        })
+                        $i.snippet(`})`)
                     })
                     break
                 default: pl.au($[0])
@@ -363,33 +474,39 @@ export const $$: A.serialize = ($d) => {
         }
 
         const SourceFile: SourceFile = ($, $i) => {
-            $i.nestedLine(($i) => {
-                $i.snippet(`import * as _ from './typesystem'`)
-            })
+            $i.line(`import * as _pt from 'pareto-core-types'`)
+            $i.line(`import * as _pl from 'pareto-core-lib'`)
+            $i.line(`import * as _pm from 'pareto-core-map'`)
+            $i.line(`import * as _pd from 'pareto-core-dev'`)
+            $i.line(`import * as _ from './typesystem'`)
             $i.line(``)
             $i.nestedLine(($i) => {
-                $i.snippet(`const $: `)
+                $i.snippet(`export const $: `)
+                $i.snippet(`_.`)
                 Type__Selection($.type, $i)
                 $i.snippet(` = `)
-                Initialization($.initialization, $i)
+                Initialization($.initialization, { 'wrap group literal': false }, $i)
             })
         }
 
         const Source__Selection: Source__Selection = ($, $i) => {
-            switch ($[0]) {
-                case 'address':
-                    pl.ss($, ($) => {
-                        $i.snippet($d.createIdentifier($.variable.key))
-                        Source__Selection__Tail($.tail, $i)
-                    })
-                    break
-                case 'context':
-                    pl.ss($, ($) => {
-                        $i.snippet(`$`)
-                    })
-                    break
-                default: pl.au($[0])
-            }
+            pl.cc($.start, ($) => {
+                switch ($[0]) {
+                    case 'variable':
+                        pl.ss($, ($) => {
+                            $i.snippet($d.createIdentifier($.key))
+                        })
+                        break
+                    case 'context':
+                        pl.ss($, ($) => {
+                            $i.snippet(`$`)
+                        })
+                        break
+                    default: pl.au($[0])
+                }
+
+            })
+            Source__Selection__Tail($.tail, $i)
         }
 
         const Source__Selection__Tail: Source__Selection__Tail = ($, $i) => {
@@ -404,7 +521,7 @@ export const $$: A.serialize = ($d) => {
                                     $i.snippet(`(`)
                                     $i.indent(($i) => {
                                         $i.nestedLine(($i) => {
-                                            Initialization($.context, $i)
+                                            Initialization($.context, { 'wrap group literal': false }, $i)
                                             $i.snippet(`,`)
                                         })
                                         $d.enrichedDictionaryForEach(
@@ -418,7 +535,7 @@ export const $$: A.serialize = ($d) => {
                                                             $c(($) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                                    Initialization($.value.content, $i)
+                                                                    Initialization($.value.content, { 'wrap group literal': false }, $i)
                                                                     $i.snippet(`,`)
                                                                 })
 
@@ -479,7 +596,7 @@ export const $$: A.serialize = ($d) => {
                                                         $c(($) => {
                                                             $i.nestedLine(($i) => {
                                                                 $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                                Initialization__Or__Selection($.value.content, $i)
+                                                                Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
                                                             })
                                                         })
                                                     })
@@ -497,7 +614,7 @@ export const $$: A.serialize = ($d) => {
                             break
                         case 'change context':
                             pl.ss($, ($) => {
-                                $i.snippet(`pl.cc(`)
+                                $i.snippet(`_pl.cc(`)
                                 Source__Selection($.source, $i)
                                 $i.snippet(`, ($) => `)
                                 Block($.block, $i)
@@ -522,7 +639,7 @@ export const $$: A.serialize = ($d) => {
                             break
                         case 'switch':
                             pl.ss($, ($) => {
-                                $i.snippet(`pl.cc(`)
+                                $i.snippet(`_pl.cc(`)
                                 Source__Selection($.source, $i)
                                 $i.snippet(`, ($) => {`)
                                 $i.indent(($i) => {
@@ -534,7 +651,7 @@ export const $$: A.serialize = ($d) => {
                                                     $i.snippet(`case ${$d.createApostrophedString(key)}: `)
                                                     $i.indent(($i) => {
                                                         $i.nestedLine(($i) => {
-                                                            $i.snippet(`pl.ss($, ($) => {`)
+                                                            $i.snippet(`_pl.ss($, ($) => {`)
                                                             Block($, $i)
                                                             $i.snippet(`}`)
                                                         })
@@ -552,7 +669,7 @@ export const $$: A.serialize = ($d) => {
                                                         Block($, $i)
                                                     },
                                                     () => {
-                                                        $i.snippet(`pl.au($[0])`)
+                                                        $i.snippet(`_pl.au($[0])`)
                                                     }
                                                 )
                                             })
@@ -565,7 +682,7 @@ export const $$: A.serialize = ($d) => {
                             break
                         case 'with':
                             pl.ss($, ($) => {
-                                $i.snippet(`pl.cc(`)
+                                $i.snippet(`_pl.cc(`)
                                 Source__Selection($.source, $i)
                                 $i.snippet(`, ($) => `)
                                 //Block($.)
@@ -645,13 +762,13 @@ export const $$: A.serialize = ($d) => {
             switch ($[0]) {
                 case 'child namespace':
                     pl.ss($, ($) => {
-                        $i.snippet($d.createIdentifier($.namespacex.key))
+                        $i.snippet(`${$d.createIdentifier($.namespacex.key)}.`)
                         Type__Selection($.selection, $i)
                     })
                     break
                 case 'current namespaceXXXXX':
                     pl.ss($, ($) => {
-                        $i.snippet(`_.${$d.createIdentifier($.key)}`)
+                        $i.snippet(`${$d.createIdentifier($.key)}`)
                     })
                     break
                 default: pl.au($[0])
@@ -666,6 +783,7 @@ export const $$: A.serialize = ($d) => {
                     'onNotEmpty': ($c) => {
                         $i.snippet(`<`)
                         $c(($) => {
+                            $i.snippet(`_.`)
                             Type__Selection($.value.content.type, $i)
                             $i.snippet($.isLast ? `` : `, `)
                         })
@@ -679,9 +797,10 @@ export const $$: A.serialize = ($d) => {
             $.local.dictionary.__forEach(() => false, ($, key) => {
                 $i.nestedLine(($i) => {
                     $i.snippet(`const ${$d.createIdentifier(key)}: `)
+                    $i.snippet(`_.`)
                     Type__Selection($.type, $i)
                     $i.snippet(` = `)
-                    Initialization($.initialization, $i)
+                    Initialization($.initialization, { 'wrap group literal': false }, $i)
                 })
             })
         }

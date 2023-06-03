@@ -19,7 +19,7 @@ import { external, submodule, tempSubmodule, this_ } from "lib-pareto-typescript
 
 export const $: g_project.T.Project<pd.SourceLocation | null> = {
     'author': "Corno",
-    'description': "the typesystem for the imperative Proto language",
+    'description': "the implementation for the imperative Proto language",
     'license': "TBD",
 
     'dependencies': d({
