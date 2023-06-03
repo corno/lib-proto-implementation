@@ -161,12 +161,12 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                             //     "variable stack": aResolvedValue(valSel("variable stack"))
                                             // })), /*constraint tagged union: type === address function*/
                                             "type arguments": prop(component(typeRef("Type Arguments"))),
-                                            "context": prop(component(typeRef("Initialization", true))),
+                                            "context": prop(component(typeRef("Initialization Or Selection", true))),
                                             "arguments": prop(constrainedDictionary(
                                                 {
                                                     "parameter": dictionaryConstraint(externalTypeSelection("typesystem", "Function Declaration", t_grp("parameters")), true)
                                                 },
-                                                component(typeRef("Initialization", true))
+                                                component(typeRef("Initialization Or Selection", true))
                                             ))
                                         })),
                                         "property": state(
@@ -414,14 +414,9 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                     "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("string")))),
                                     "initialization": prop(component(typeRef("String Initialization"))),
                                 })),
-                                "value function": state(group({
-                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("procedure")))),
-                                    "temp has parameters": prop(optional(group({}))),
-                                    "variables": prop(component(typeRef("Aggregated Variables"))),
-                                    "initialization": prop(component(typeRef("Initialization Or Selection")))
-                                })),
                                 "switch": state(group({
                                     "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                                    "temp type": prop(component(typeRef("Type Selection"))),
                                     "source": prop(component(typeRef("Source Selection"))),
                                     "cases": prop(constrainedDictionary(
                                         {
@@ -469,6 +464,12 @@ export const $: g_pareto_lang_data_settings.T.GenerateSubmodulesParameters = {
                                 // //         })),
                                 // //     })))),
                                 // // })),
+                                "value function": state(group({
+                                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("procedure")))),
+                                    "temp has parameters": prop(optional(group({}))),
+                                    "variables": prop(component(typeRef("Aggregated Variables"))),
+                                    "initialization": prop(component(typeRef("Initialization Or Selection")))
+                                })),
                                 "variables": state(group({
                                     "variables": prop(component(typeRef("Variables"))),
                                     "initialization": prop(component(typeRef(("Initialization Or Selection")))),

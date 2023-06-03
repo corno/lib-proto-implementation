@@ -350,7 +350,9 @@ export const $$: A.serialize = ($d) => {
                     pl.ss($, ($) => {
                         $i.snippet(`_pl.cc(`)
                         Source__Selection($.source, $i)
-                        $i.snippet(`, ($) => {`)
+                        $i.snippet(`, ($): _.`)
+                        Type__Selection($['temp type'], $i)
+                        $i.snippet(` => {`)
                         $i.indent(($i) => {
                             $i.nestedLine(($i) => {
                                 $i.snippet(`switch ($[0]) {`)
@@ -529,7 +531,7 @@ export const $$: A.serialize = ($d) => {
                                     $i.snippet(`(`)
                                     $i.indent(($i) => {
                                         $i.nestedLine(($i) => {
-                                            Initialization($.context, { 'wrap group literal': false }, $i)
+                                            Initialization__Or__Selection($.context, { 'wrap group literal': false }, $i)
                                             $i.snippet(`,`)
                                         })
                                         $d.enrichedDictionaryForEach(
@@ -543,7 +545,7 @@ export const $$: A.serialize = ($d) => {
                                                             $c(($) => {
                                                                 $i.nestedLine(($i) => {
                                                                     $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                                    Initialization($.value.content, { 'wrap group literal': false }, $i)
+                                                                    Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
                                                                     $i.snippet(`,`)
                                                                 })
 

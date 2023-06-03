@@ -507,6 +507,14 @@ export const $: g_glossary.T.Glossary<null> = {
                                 'type arguments': d({}),
                             }]],
                         },
+                        "temp type": {
+                            'type': <g_glossary.T.Type<null>>['reference', ['type', {
+                                'context': ['local', null],
+                                'typeXX': "Type Selection",
+                                'tailXX': a([]),
+                                'type arguments': d({}),
+                            }]],
+                        },
                     })],
                     "tagged union literal": <g_glossary.T.Type<null>>['group', d({
                         "definition": {
@@ -792,7 +800,7 @@ export const $: g_glossary.T.Glossary<null> = {
                                                 "content": {
                                                     'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                                         'context': ['local', null],
-                                                        'typeXX': "Initialization",
+                                                        'typeXX': "Initialization Or Selection",
                                                         'tailXX': a([]),
                                                         'type arguments': d({}),
                                                     }]],
@@ -804,7 +812,7 @@ export const $: g_glossary.T.Glossary<null> = {
                                 "context": {
                                     'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                         'context': ['local', null],
-                                        'typeXX': "Initialization",
+                                        'typeXX': "Initialization Or Selection",
                                         'tailXX': a([]),
                                         'type arguments': d({}),
                                     }]],
@@ -1795,6 +1803,10 @@ export const $: g_glossary.T.Glossary<null> = {
                                                 'namespaces': d({}),
                                             },
                                             "source": {
+                                                'types': d({}),
+                                                'namespaces': d({}),
+                                            },
+                                            "temp type": {
                                                 'types': d({}),
                                                 'namespaces': d({}),
                                             },

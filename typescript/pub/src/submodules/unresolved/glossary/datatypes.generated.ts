@@ -974,6 +974,13 @@ export namespace N {
                                         
                                         export namespace T {}
                                     }
+                                    
+                                    export namespace temp_$_$type {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
                                 }
                                 
                                 export namespace T {}
@@ -2760,6 +2767,8 @@ export namespace T {
             export type definition<GAnnotation> = GAnnotation
             
             export type source<GAnnotation> = T.Source__Selection<GAnnotation>
+            
+            export type temp__type<GAnnotation> = T.Type__Selection<GAnnotation>
         }
         
         export type _lswitch<GAnnotation> = {
@@ -2770,6 +2779,7 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection<GAnnotation>]
             readonly 'definition': GAnnotation
             readonly 'source': T.Source__Selection<GAnnotation>
+            readonly 'temp type': T.Type__Selection<GAnnotation>
         }
         
         export namespace tagged__union__literal {
@@ -2907,6 +2917,7 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection<GAnnotation>]
             readonly 'definition': GAnnotation
             readonly 'source': T.Source__Selection<GAnnotation>
+            readonly 'temp type': T.Type__Selection<GAnnotation>
         }]
         | ['tagged union literal', {
             readonly 'definition': GAnnotation
@@ -3131,18 +3142,18 @@ export namespace T {
                                 
                                 export type annotation<GAnnotation> = GAnnotation
                                 
-                                export type content<GAnnotation> = T.Initialization<GAnnotation>
+                                export type content<GAnnotation> = T.Initialization__Or__Selection<GAnnotation>
                             }
                             
                             export type D<GAnnotation> = {
                                 readonly 'annotation': GAnnotation
-                                readonly 'content': T.Initialization<GAnnotation>
+                                readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                             }
                         }
                         
                         export type dictionary<GAnnotation> = pt.Dictionary<{
                             readonly 'annotation': GAnnotation
-                            readonly 'content': T.Initialization<GAnnotation>
+                            readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                         }>
                     }
                     
@@ -3150,11 +3161,11 @@ export namespace T {
                         readonly 'annotation': GAnnotation
                         readonly 'dictionary': pt.Dictionary<{
                             readonly 'annotation': GAnnotation
-                            readonly 'content': T.Initialization<GAnnotation>
+                            readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                         }>
                     }
                     
-                    export type context<GAnnotation> = T.Initialization<GAnnotation>
+                    export type context<GAnnotation> = T.Initialization__Or__Selection<GAnnotation>
                     
                     export type type__arguments<GAnnotation> = T.Type__Arguments<GAnnotation>
                 }
@@ -3165,10 +3176,10 @@ export namespace T {
                         readonly 'annotation': GAnnotation
                         readonly 'dictionary': pt.Dictionary<{
                             readonly 'annotation': GAnnotation
-                            readonly 'content': T.Initialization<GAnnotation>
+                            readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                         }>
                     }
-                    readonly 'context': T.Initialization<GAnnotation>
+                    readonly 'context': T.Initialization__Or__Selection<GAnnotation>
                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                 }
                 
@@ -3205,10 +3216,10 @@ export namespace T {
                         readonly 'annotation': GAnnotation
                         readonly 'dictionary': pt.Dictionary<{
                             readonly 'annotation': GAnnotation
-                            readonly 'content': T.Initialization<GAnnotation>
+                            readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                         }>
                     }
-                    readonly 'context': T.Initialization<GAnnotation>
+                    readonly 'context': T.Initialization__Or__Selection<GAnnotation>
                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                 }]
                 | ['property', {
@@ -3230,10 +3241,10 @@ export namespace T {
                         readonly 'annotation': GAnnotation
                         readonly 'dictionary': pt.Dictionary<{
                             readonly 'annotation': GAnnotation
-                            readonly 'content': T.Initialization<GAnnotation>
+                            readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                         }>
                     }
-                    readonly 'context': T.Initialization<GAnnotation>
+                    readonly 'context': T.Initialization__Or__Selection<GAnnotation>
                     readonly 'type arguments': T.Type__Arguments<GAnnotation>
                 }]
                 | ['property', {
@@ -3255,10 +3266,10 @@ export namespace T {
                     readonly 'annotation': GAnnotation
                     readonly 'dictionary': pt.Dictionary<{
                         readonly 'annotation': GAnnotation
-                        readonly 'content': T.Initialization<GAnnotation>
+                        readonly 'content': T.Initialization__Or__Selection<GAnnotation>
                     }>
                 }
-                readonly 'context': T.Initialization<GAnnotation>
+                readonly 'context': T.Initialization__Or__Selection<GAnnotation>
                 readonly 'type arguments': T.Type__Arguments<GAnnotation>
             }]
             | ['property', {

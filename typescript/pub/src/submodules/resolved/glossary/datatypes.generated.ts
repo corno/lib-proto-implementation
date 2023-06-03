@@ -975,6 +975,13 @@ export namespace N {
                                         
                                         export namespace T {}
                                     }
+                                    
+                                    export namespace temp_$_$type {
+                                        
+                                        export namespace N {}
+                                        
+                                        export namespace T {}
+                                    }
                                 }
                                 
                                 export namespace T {}
@@ -2725,6 +2732,8 @@ export namespace T {
             export type definition = g_typesystem.T.Type.tagged__union
             
             export type source = T.Source__Selection
+            
+            export type temp__type = T.Type__Selection
         }
         
         export type _lswitch = {
@@ -2732,6 +2741,7 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection]
             readonly 'definition': g_typesystem.T.Type.tagged__union
             readonly 'source': T.Source__Selection
+            readonly 'temp type': T.Type__Selection
         }
         
         export namespace tagged__union__literal {
@@ -2862,6 +2872,7 @@ export namespace T {
             readonly 'default': [ false ] | [ true, T.Initialization__Or__Selection]
             readonly 'definition': g_typesystem.T.Type.tagged__union
             readonly 'source': T.Source__Selection
+            readonly 'temp type': T.Type__Selection
         }]
         | ['tagged union literal', {
             readonly 'definition': g_typesystem.T.Type.tagged__union
@@ -3076,14 +3087,14 @@ export namespace T {
                                 readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                             }
                             
-                            export type content = T.Initialization
+                            export type content = T.Initialization__Or__Selection
                         }
                         
                         export type D = {
                             readonly 'constraints': {
                                 readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                             }
-                            readonly 'content': T.Initialization
+                            readonly 'content': T.Initialization__Or__Selection
                         }
                     }
                     
@@ -3091,10 +3102,10 @@ export namespace T {
                         readonly 'constraints': {
                             readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                         }
-                        readonly 'content': T.Initialization
+                        readonly 'content': T.Initialization__Or__Selection
                     }>
                     
-                    export type context = T.Initialization
+                    export type context = T.Initialization__Or__Selection
                     
                     export type type__arguments = T.Type__Arguments
                 }
@@ -3105,9 +3116,9 @@ export namespace T {
                         readonly 'constraints': {
                             readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                         }
-                        readonly 'content': T.Initialization
+                        readonly 'content': T.Initialization__Or__Selection
                     }>
-                    readonly 'context': T.Initialization
+                    readonly 'context': T.Initialization__Or__Selection
                     readonly 'type arguments': T.Type__Arguments
                 }
                 
@@ -3144,9 +3155,9 @@ export namespace T {
                         readonly 'constraints': {
                             readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                         }
-                        readonly 'content': T.Initialization
+                        readonly 'content': T.Initialization__Or__Selection
                     }>
-                    readonly 'context': T.Initialization
+                    readonly 'context': T.Initialization__Or__Selection
                     readonly 'type arguments': T.Type__Arguments
                 }]
                 | ['property', {
@@ -3168,9 +3179,9 @@ export namespace T {
                         readonly 'constraints': {
                             readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                         }
-                        readonly 'content': T.Initialization
+                        readonly 'content': T.Initialization__Or__Selection
                     }>
-                    readonly 'context': T.Initialization
+                    readonly 'context': T.Initialization__Or__Selection
                     readonly 'type arguments': T.Type__Arguments
                 }]
                 | ['property', {
@@ -3192,9 +3203,9 @@ export namespace T {
                     readonly 'constraints': {
                         readonly 'parameter': g_typesystem.T.Function__Declaration.parameters.D
                     }
-                    readonly 'content': T.Initialization
+                    readonly 'content': T.Initialization__Or__Selection
                 }>
-                readonly 'context': T.Initialization
+                readonly 'context': T.Initialization__Or__Selection
                 readonly 'type arguments': T.Type__Arguments
             }]
             | ['property', {
