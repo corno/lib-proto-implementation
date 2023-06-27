@@ -15,8 +15,11 @@ export const $: g_llimp.T.Source__File<pd.SourceLocation> = {
         'annotation': pd.getLocationInfo(0),
         'key': "FOO",
     }],
-    'initialization': ['boolean', {
+    'initialization': ['type', ['atom', {
         'definition': pd.getLocationInfo(0),
-        'initialization': ['true', null],
-    }]
+        'type': ['boolean', {
+            'definition': pd.getLocationInfo(0),
+            'initialization': ['true', null],
+        }]
+    }]]
 }

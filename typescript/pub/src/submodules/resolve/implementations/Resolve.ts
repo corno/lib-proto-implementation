@@ -46,14 +46,14 @@ export type Initialization<Annotation> = (
     },
 ) => g_out.T.Initialization
 
-export type Initialization__Or__Selection<Annotation> = (
-    $: g_in.T.Initialization__Or__Selection<Annotation>,
-    $p: {
-        'expected type': pt.OptionalValue<g_out_typesystem.T.Type>,
-        'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
-        'variable stack': pt.OptionalValue<g_out.T.Variables>,
-    },
-) => g_out.T.Initialization__Or__Selection
+// export type Initialization__Or__Selection<Annotation> = (
+//     $: g_in.T.Initialization__Or__Selection<Annotation>,
+//     $p: {
+//         'expected type': pt.OptionalValue<g_out_typesystem.T.Type>,
+//         'namespace': pt.OptionalValue<g_out_typesystem.T.Namespace>,
+//         'variable stack': pt.OptionalValue<g_out.T.Variables>,
+//     },
+// ) => g_out.T.Initialization__Or__Selection
 
 export type Numerical__Initialization<Annotation> = (
     $: g_in.T.Numerical__Initialization<Annotation>,
@@ -162,7 +162,7 @@ export type Resolve<Annotation> = {
     Boolean__Initialization: Boolean__Initialization<Annotation>
     Boolean__Initialization__Or__Selection: Boolean__Initialization__Or__Selection<Annotation>
     Initialization: Initialization<Annotation>
-    Initialization__Or__Selection: Initialization__Or__Selection<Annotation>
+    //Initialization__Or__Selection: Initialization__Or__Selection<Annotation>
     Numerical__Initialization: Numerical__Initialization<Annotation>
     Numerical__Initialization__Or__Selection: Numerical__Initialization__Or__Selection<Annotation>
     Source__Selection: Source__Selection<Annotation>

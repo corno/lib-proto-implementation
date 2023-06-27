@@ -32,11 +32,8 @@ export const $$: A.serialize = ($d) => {
             $i: g_fp.SYNC.I.Line,
         ) => void
 
-        type Initialization__Or__Selection = <Annotation> (
-            $: g_in.T.Initialization__Or__Selection<Annotation>,
-            $p: {
-                'wrap group literal': boolean,
-            },
+        type Function__Call = <Annotation> (
+            $: g_in.T.Function__Call<Annotation>,
             $i: g_fp.SYNC.I.Line,
         ) => void
 
@@ -216,200 +213,276 @@ export const $$: A.serialize = ($d) => {
         }
 
 
-        const Initialization__Or__Selection: Initialization__Or__Selection = ($, $p, $i) => {
-            switch ($[0]) {
-                case 'initialization':
-                    pl.ss($, ($) => {
-                        Initialization($, $p, $i)
-                    })
-                    break
-                case 'selection':
-                    pl.ss($, ($) => {
-                        Source__Selection($.selection, $i)
-                    })
-                    break
-                default: pl.au($[0])
-            }
-        }
+        // const Initialization__Or__Selection: Initialization__Or__Selection = ($, $p, $i) => {
+        //     switch ($[0]) {
+        //         case 'initialization':
+        //             pl.ss($, ($) => {
+        //                 Initialization($, $p, $i)
+        //             })
+        //             break
+        //         case 'selection':
+        //             pl.ss($, ($) => {
+        //                 Source__Selection($.selection, $i)
+        //             })
+        //             break
+        //         default: pl.au($[0])
+        //     }
+        // }
 
         const Initialization: Initialization = ($, $p, $i) => {
             switch ($[0]) {
-                case 'array literal':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pm.wrapRawArray([`)
-                        $.initialization.__forEach(($) => {
-                            Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
-                        })
-                        $i.snippet(`])`)
-                    })
-                    break
-                case 'array map':
-                    pl.ss($, ($) => {
-                        Source__Selection($.source, $i)
 
-                        $i.snippet(`.map(($) => `)
-                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
-                        $i.snippet(`)`)
-                    })
-                    break
-                case 'boolean':
+                case 'type':
                     pl.ss($, ($) => {
-                        Boolean__Initialization($.initialization, $i)
-                    })
-                    break
-                case 'change context':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pl.cc(`)
-                        Source__Selection($.source, $i)
-                        $i.snippet(`, ($) => `)
-                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
-                        $i.snippet(`)`)
-                    })
-                    break
-                case 'dictionary literal':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pm.wrapRawDictionary({`)
-                        $i.indent(($i) => {
-                            $.initialization.dictionary.__mapWithKey(($, key) => {
-                                $i.nestedLine(($i) => {
-                                    $i.snippet(`${$d.createApostrophedString(key)}:`)
-                                    Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
+                        switch ($[0]) {
+                            case 'atom':
+                                pl.ss($, ($) => {
+                                    pl.cc($.type, ($) => {
+                                        switch ($[0]) {
+                                            case 'boolean':
+                                                pl.ss($, ($) => {
+                                                    Boolean__Initialization($.initialization, $i)
+                                                })
+                                                break
+                                            case 'copy':
+                                                pl.ss($, ($) => {
+                                                    Source__Selection($.source, $i)
+                                                })
+                                                break
+                                            case 'string':
+                                                pl.ss($, ($) => {
+                                                    String__Initialization($.initialization, $i)
+                                                })
+                                                break
+                                            case 'null':
+                                                pl.ss($, ($) => {
+                                                    $i.snippet(`null`)
+                                                })
+                                                break
+                                            case 'numerical':
+                                                pl.ss($, ($) => {
+                                                    Numerical__Initialization($.initialization, $i)
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
+                                    })
                                 })
-                            })
-                        })
-                        $i.snippet(`})`)
-                    })
-                    break
-                case 'dictionary map':
-                    pl.ss($, ($) => {
-                        Source__Selection($.source, $i)
-                        $i.snippet(`.map(($) => `)
-                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
-                        $i.snippet(`)`)
-                    })
-                    break
-                case 'group literal':
-                    pl.ss($, ($) => {
-                        $d.enrichedDictionaryForEach(
-                            $.properties.dictionary,
-                            {
-                                'onEmpty': () => {
-                                    $i.snippet(`null`)
-                                },
-                                'onNotEmpty': ($c) => {
+                                break
+                            case 'array':
+                                pl.ss($, ($) => {
+                                    pl.cc($.type, ($) => {
+                                        switch ($[0]) {
+                                            case 'literal':
+                                                pl.ss($, ($) => {
+                                                    $i.snippet(`_pm.wrapRawArray([`)
+                                                    $.initialization.__forEach(($) => {
+                                                        Initialization($, { 'wrap group literal': false }, $i)
+                                                    })
+                                                    $i.snippet(`])`)
+                                                })
+                                                break
+                                            case 'map':
+                                                pl.ss($, ($) => {
+                                                    Source__Selection($.source, $i)
 
-                                    $i.snippet(`${$p['wrap group literal'] ? `(` : ``}{`)
-                                    $i.indent(($i) => {
-                                        $c(($) => {
-                                            $i.nestedLine(($i) => {
-                                                $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
-                                                $i.snippet(`,`)
-                                            })
-                                        })
+                                                    $i.snippet(`.map(($) => `)
+                                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                                    $i.snippet(`)`)
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
                                     })
-                                    $i.snippet(`}${$p['wrap group literal'] ? `)` : ``}`)
-                                }
-                            }
-                        )
-                    })
-                    break
-                case 'implement me':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pd.implementMe(${$d.createQuotedString($)})`)
-                    })
-                    break
-                case 'null':
-                    pl.ss($, ($) => {
-                        $i.snippet(`null`)
-                    })
-                    break
-                case 'numerical':
-                    pl.ss($, ($) => {
-                        Numerical__Initialization($.initialization, $i)
-                    })
-                    break
-                case 'optional':
-                    pl.ss($, ($) => {
-                        $i.snippet(`FIXOPTIONAL`)
-                        //Numerical__Initialization($.initialization, $i)
-                    })
-                    break
-                case 'procedure':
-                    pl.ss($, ($) => {
-                        $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
-                        Block($.block, $i)
-                    })
-                    break
-                case 'string':
-                    pl.ss($, ($) => {
-                        String__Initialization($.initialization, $i)
-                    })
-                    break
-                case 'switch':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pl.cc(`)
-                        Source__Selection($.source, $i)
-                        $i.snippet(`, ($): _.`)
-                        Type__Selection($['temp type'], $i)
-                        $i.snippet(` => {`)
-                        $i.indent(($i) => {
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`switch ($[0]) {`)
-                                $i.indent(($i) => {
-                                    $.cases.dictionary.__forEach(() => false, ($, key) => {
-                                        $i.nestedLine(($i) => {
-                                            $i.snippet(`case ${$d.createApostrophedString(key)}: return _pl.ss($, ($) => `)
-                                            Initialization__Or__Selection($, { 'wrap group literal': true }, $i)
-                                            $i.snippet(`)`)
-                                        })
+                                })
+                                break
+                            case 'computed':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`FIX COMPUTED`)
+                                    //Numerical__Initialization($.initialization, $i)
+                                })
+                                break
+                            case 'dictionary':
+                                pl.ss($, ($) => {
+                                    pl.cc($.type, ($) => {
+                                        switch ($[0]) {
+                                            case 'literal':
+                                                pl.ss($, ($) => {
+                                                    $i.snippet(`_pm.wrapRawDictionary({`)
+                                                    $i.indent(($i) => {
+                                                        $.initialization.dictionary.__mapWithKey(($, key) => {
+                                                            $i.nestedLine(($i) => {
+                                                                $i.snippet(`${$d.createApostrophedString(key)}:`)
+                                                                Initialization($, { 'wrap group literal': false }, $i)
+                                                            })
+                                                        })
+                                                    })
+                                                    $i.snippet(`})`)
+                                                })
+                                                break
+                                            case 'map':
+                                                pl.ss($, ($) => {
+                                                    Source__Selection($.source, $i)
+                                                    $i.snippet(`.map(($) => `)
+                                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                                    $i.snippet(`)`)
+                                                })
+                                                break
+                                            default: pl.au($[0])
+                                        }
                                     })
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(`default: return `)
-                                        pl.optional(
-                                            $.default,
-                                            ($) => {
-                                                Initialization__Or__Selection($, { 'wrap group literal': false }, $i)
+                                })
+                                break
+                            case 'group':
+                                pl.ss($, ($) => {
+                                    $d.enrichedDictionaryForEach(
+                                        $.properties.dictionary,
+                                        {
+                                            'onEmpty': () => {
+                                                $i.snippet(`null`)
                                             },
-                                            () => {
-                                                $i.snippet(`_pl.au($[0])`)
+                                            'onNotEmpty': ($c) => {
+
+                                                $i.snippet(`${$p['wrap group literal'] ? `(` : ``}{`)
+                                                $i.indent(($i) => {
+                                                    $c(($) => {
+                                                        $i.nestedLine(($i) => {
+                                                            $i.snippet(`${$d.createApostrophedString($.key)}: `)
+                                                            Initialization($.value.content, { 'wrap group literal': false }, $i)
+                                                            $i.snippet(`,`)
+                                                        })
+                                                    })
+                                                })
+                                                $i.snippet(`}${$p['wrap group literal'] ? `)` : ``}`)
                                             }
-                                        )
-                                    })
+                                        }
+                                    )
                                 })
-                                $i.snippet(`}`)
-                            })
-                        })
-                        $i.snippet(`})`)
+                                break
+                            case 'initialization function':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
+                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                })
+                                break
+                                case 'lookup':
+                                    pl.ss($, ($) => {
+                                        $i.snippet(`FIX LOOKUP`)
+                                        //Numerical__Initialization($.initialization, $i)
+                                    })
+                                    break
+                            case 'optional':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`FIX OPTIONAL`)
+                                    //Numerical__Initialization($.initialization, $i)
+                                })
+                                break
+                            case 'procedure':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
+                                    Block($.block, $i)
+                                })
+                                break
+                            case 'selection function':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
+                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                })
+                                break
+                            case 'tagged union':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`[${$d.createApostrophedString($.state.key)}, `)
+                                    Initialization($.initialization, $p, $i)
+                                    $i.snippet(`]`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                    break
+                case 'generic':
+                    pl.ss($, ($) => {
+                        switch ($[0]) {
+                            case 'change context':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`_pl.cc(`)
+                                    Source__Selection($.source, $i)
+                                    $i.snippet(`, ($) => `)
+                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                    $i.snippet(`)`)
+                                })
+                                break
+                            case 'implement me':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`_pd.implementMe(${$d.createQuotedString($)})`)
+                                })
+                                break
+                            case 'panic':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`_pl.panic(${$d.createQuotedString($)})`)
+                                })
+                                break
+                            case 'switch':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`_pl.cc(`)
+                                    Source__Selection($.source, $i)
+                                    $i.snippet(`, ($): _.`)
+                                    Type__Selection($['temp type'], $i)
+                                    $i.snippet(` => {`)
+                                    $i.indent(($i) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`switch ($[0]) {`)
+                                            $i.indent(($i) => {
+                                                $.cases.dictionary.__forEach(() => false, ($, key) => {
+                                                    $i.nestedLine(($i) => {
+                                                        $i.snippet(`case ${$d.createApostrophedString(key)}: return _pl.ss($, ($) => `)
+                                                        Initialization($, { 'wrap group literal': true }, $i)
+                                                        $i.snippet(`)`)
+                                                    })
+                                                })
+                                                $i.nestedLine(($i) => {
+                                                    $i.snippet(`default: return `)
+                                                    pl.optional(
+                                                        $.default,
+                                                        ($) => {
+                                                            Initialization($, { 'wrap group literal': false }, $i)
+                                                        },
+                                                        () => {
+                                                            $i.snippet(`_pl.au($[0])`)
+                                                        }
+                                                    )
+                                                })
+                                            })
+                                            $i.snippet(`}`)
+                                        })
+                                    })
+                                    $i.snippet(`})`)
+                                })
+                                break
+                            case 'variables':
+                                pl.ss($, ($) => {
+                                    $i.snippet(`_pl.cc($, ($) => {`)
+                                    $i.indent(($i) => {
+                                        Variables($.variables, $i)
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`return `)
+                                            Initialization($.initialization, { 'wrap group literal': false }, $i)
+                                        })
+                                    })
+                                    $i.snippet(`})`)
+                                })
+                                break
+                            default: pl.au($[0])
+                        }
+                    })
+                    break
+                case 'call':
+                    pl.ss($, ($) => {
+                        Source__Selection($.function, $i)
+                        Function__Call($.call, $i)
                     })
                     break
 
-                case 'tagged union literal':
-                    pl.ss($, ($) => {
-                        $i.snippet(`[${$d.createApostrophedString($.state.key)}, `)
-                        Initialization__Or__Selection($.initialization,$p, $i)
-                        $i.snippet(`]`)
-                    })
-                    break
-                case 'value function':
-                    pl.ss($, ($) => {
-                        $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
-                        Initialization__Or__Selection($.initialization, { 'wrap group literal': true }, $i)
-                    })
-                    break
-                case 'variables':
-                    pl.ss($, ($) => {
-                        $i.snippet(`_pl.cc($, ($) => {`)
-                        $i.indent(($i) => {
-                            Variables($.variables, $i)
-                            $i.nestedLine(($i) => {
-                                $i.snippet(`return `)
-                                Initialization__Or__Selection($.initialization, { 'wrap group literal': false }, $i)
-                            })
-                        })
-                        $i.snippet(`})`)
-                    })
-                    break
                 default: pl.au($[0])
             }
         }
@@ -519,6 +592,54 @@ export const $$: A.serialize = ($d) => {
             Source__Selection__Tail($.tail, $i)
         }
 
+        const Function__Call: Function__Call = ($, $i) => {
+            Type__Arguments($['type arguments'], $i)
+            $i.snippet(`(`)
+            $i.indent(($i) => {
+                $i.nestedLine(($i) => {
+                    Source__Selection($.context, $i)
+                    $i.snippet(`,`)
+                })
+                $d.enrichedDictionaryForEach(
+                    $.arguments.dictionary,
+                    {
+                        'onEmpty': () => { },
+                        'onNotEmpty': ($c) => {
+                            $i.nestedLine(($i) => {
+                                $i.snippet(`{`)
+                                $i.indent(($i) => {
+                                    $c(($) => {
+                                        $i.nestedLine(($i) => {
+                                            $i.snippet(`${$d.createApostrophedString($.key)}: `)
+                                            pl.cc($.value.content, ($) => {
+                                                switch ($[0]) {
+                                                    case 'initialization':
+                                                        pl.ss($, ($) => {
+                                                            Initialization($, { 'wrap group literal': false }, $i)
+                                                        })
+                                                        break
+                                                    case 'selection':
+                                                        pl.ss($, ($) => {
+                                                            Source__Selection($.selection, $i)
+                                                        })
+                                                        break
+                                                    default: pl.au($[0])
+                                                }
+                                            })
+                                            $i.snippet(`,`)
+                                        })
+
+                                    })
+                                })
+                                $i.snippet(`}`)
+                            })
+                        }
+                    }
+                )
+            })
+            $i.snippet(`)`)
+        }
+
         const Source__Selection__Tail: Source__Selection__Tail = ($, $i) => {
             pl.optional(
                 $,
@@ -527,37 +648,7 @@ export const $$: A.serialize = ($d) => {
                         switch ($[0]) {
                             case 'call':
                                 pl.ss($, ($) => {
-                                    Type__Arguments($['type arguments'], $i)
-                                    $i.snippet(`(`)
-                                    $i.indent(($i) => {
-                                        $i.nestedLine(($i) => {
-                                            Initialization__Or__Selection($.context, { 'wrap group literal': false }, $i)
-                                            $i.snippet(`,`)
-                                        })
-                                        $d.enrichedDictionaryForEach(
-                                            $.arguments.dictionary,
-                                            {
-                                                'onEmpty': () => { },
-                                                'onNotEmpty': ($c) => {
-                                                    $i.nestedLine(($i) => {
-                                                        $i.snippet(`{`)
-                                                        $i.indent(($i) => {
-                                                            $c(($) => {
-                                                                $i.nestedLine(($i) => {
-                                                                    $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                                    Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
-                                                                    $i.snippet(`,`)
-                                                                })
-
-                                                            })
-                                                        })
-                                                        $i.snippet(`}`)
-                                                    })
-                                                }
-                                            }
-                                        )
-                                    })
-                                    $i.snippet(`)`)
+                                    Function__Call($.call, $i)
                                 })
                                 break
                             case 'property':
@@ -589,37 +680,7 @@ export const $$: A.serialize = ($d) => {
                             pl.ss($, ($) => {
 
                                 Source__Selection($.function, $i)
-                                $i.snippet(`(`)
-                                $i.indent(($i) => {
-                                    $i.nestedLine(($i) => {
-                                        Source__Selection($.context, $i)
-                                        $i.snippet(`,`)
-                                    })
-                                    $d.enrichedDictionaryForEach(
-                                        $.arguments.dictionary,
-                                        {
-                                            'onEmpty': () => { },
-                                            'onNotEmpty': ($c) => {
-                                                $i.nestedLine(($i) => {
-                                                    $i.snippet(`{`)
-                                                    $i.indent(($i) => {
-                                                        $c(($) => {
-                                                            $i.nestedLine(($i) => {
-                                                                $i.snippet(`${$d.createApostrophedString($.key)}: `)
-                                                                Initialization__Or__Selection($.value.content, { 'wrap group literal': false }, $i)
-                                                            })
-                                                        })
-                                                    })
-                                                    $i.snippet(`}`)
-                                                })
-                                            },
-                                        }
-                                    )
-                                    $i.nestedLine(($i) => {
-                                        $i.snippet(``)
-                                    })
-                                })
-                                $i.snippet(`)`)
+                                Function__Call($.call, $i)
                             })
                             break
                         case 'change context':
