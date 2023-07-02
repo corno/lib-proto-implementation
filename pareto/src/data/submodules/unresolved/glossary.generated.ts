@@ -686,10 +686,10 @@ export const $: g_glossary.T.Glossary<null> = {
                             "definition": {
                                 'type': <g_glossary.T.Type<null>>['reference', ['glossary parameterXX', "Annotation"]],
                             },
-                            "initialization": {
+                            "selection": {
                                 'type': <g_glossary.T.Type<null>>['reference', ['type', {
                                     'context': ['local', null],
-                                    'typeXX': "Initialization",
+                                    'typeXX': "Source Selection",
                                     'tailXX': a([]),
                                     'type arguments': d({}),
                                 }]],
@@ -2149,7 +2149,7 @@ export const $: g_glossary.T.Glossary<null> = {
                                                                 'types': d({}),
                                                                 'namespaces': d({}),
                                                             },
-                                                            "initialization": {
+                                                            "selection": {
                                                                 'types': d({}),
                                                                 'namespaces': d({}),
                                                             },

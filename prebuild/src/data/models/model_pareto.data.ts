@@ -447,7 +447,7 @@ const imp = typeLibrary(
                         "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("selection function")))),
                         "temp has parameters": prop(optional(group({}))),
                         "variables": prop(component(typeRef("Aggregated Variables"), {})),
-                        "initialization": prop(component(typeRef("Initialization", true), {}))
+                        "selection": prop(component(typeRef("Source Selection", true), {}))
                     })),
                     "tagged union": state(group({
                         "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),

@@ -1412,7 +1412,7 @@ export namespace N {
                                                         export namespace T {}
                                                     }
                                                     
-                                                    export namespace initialization {
+                                                    export namespace selection {
                                                         
                                                         export namespace N {}
                                                         
@@ -3387,7 +3387,7 @@ export namespace T {
                 
                 export type definition<GAnnotation> = GAnnotation
                 
-                export type initialization<GAnnotation> = T.Initialization<GAnnotation>
+                export type selection<GAnnotation> = T.Source__Selection<GAnnotation>
                 
                 export namespace temp__has__parameters {
                     
@@ -3403,7 +3403,7 @@ export namespace T {
             
             export type selection__function<GAnnotation> = {
                 readonly 'definition': GAnnotation
-                readonly 'initialization': T.Initialization<GAnnotation>
+                readonly 'selection': T.Source__Selection<GAnnotation>
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables<GAnnotation>
             }
@@ -3518,7 +3518,7 @@ export namespace T {
             }]
             | ['selection function', {
                 readonly 'definition': GAnnotation
-                readonly 'initialization': T.Initialization<GAnnotation>
+                readonly 'selection': T.Source__Selection<GAnnotation>
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables<GAnnotation>
             }]
@@ -3620,7 +3620,7 @@ export namespace T {
             }]
             | ['selection function', {
                 readonly 'definition': GAnnotation
-                readonly 'initialization': T.Initialization<GAnnotation>
+                readonly 'selection': T.Source__Selection<GAnnotation>
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables<GAnnotation>
             }]

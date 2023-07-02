@@ -386,7 +386,7 @@ export const $$: A.serialize = ($d) => {
                             case 'selection function':
                                 pl.ss($, ($) => {
                                     $i.snippet(`($${$['temp has parameters'][0] ? `, $p` : ``}) => `)
-                                    Initialization($.initialization, { 'wrap group literal': true }, $i)
+                                    Source__Selection($.selection, $i)
                                 })
                                 break
                             case 'tagged union':

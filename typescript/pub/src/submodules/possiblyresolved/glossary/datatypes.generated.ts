@@ -1415,7 +1415,7 @@ export namespace N {
                                                         export namespace T {}
                                                     }
                                                     
-                                                    export namespace initialization {
+                                                    export namespace selection {
                                                         
                                                         export namespace N {}
                                                         
@@ -3439,7 +3439,7 @@ export namespace T {
                 
                 export type definition = [ false ] | [ true, g_typesystem.T.Type.selection__function]
                 
-                export type initialization = T.Initialization
+                export type selection = T.Source__Selection
                 
                 export namespace temp__has__parameters {
                     
@@ -3455,7 +3455,7 @@ export namespace T {
             
             export type selection__function = {
                 readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.selection__function]
-                readonly 'initialization': T.Initialization
+                readonly 'selection': T.Source__Selection
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables
             }
@@ -3576,7 +3576,7 @@ export namespace T {
             }]
             | ['selection function', {
                 readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.selection__function]
-                readonly 'initialization': T.Initialization
+                readonly 'selection': T.Source__Selection
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables
             }]
@@ -3674,7 +3674,7 @@ export namespace T {
             }]
             | ['selection function', {
                 readonly 'definition': [ false ] | [ true, g_typesystem.T.Type.selection__function]
-                readonly 'initialization': T.Initialization
+                readonly 'selection': T.Source__Selection
                 readonly 'temp has parameters': [ false ] | [ true, null]
                 readonly 'variables': T.Aggregated__Variables
             }]
