@@ -75,6 +75,95 @@ const imp = typeLibrary(
     //     "Variables": globalTypeDeclaration({}),
     // },
     {
+
+        "Generic Initialization": globalType(
+            {},
+            stateGroup({
+                "change context": state(group({
+                    "source": prop(component(typeRef("Source Selection", true), {})),
+                    "content": prop(component(typeRef("Initialization", true), {})),
+                })),
+                "implement me": state(atom("string literal")),
+                "panic": state(atom("string literal")),
+                "switch": state(group({
+                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                    "temp type": prop(component(typeRef("Type Selection"), {})),
+                    "source": prop(component(typeRef("Source Selection", true), {})),
+                    "cases": prop(constrainedDictionary(
+                        {
+
+                        },
+                        component(typeRef("Initialization", true), {})
+                    )),
+                    "default": prop(optional(component(typeRef("Initialization", true), {})))
+                })),
+                "variables": state(group({
+                    "variables": prop(component(typeRef("Variables"), {})),
+                    "content": prop(component(typeRef("Initialization", true), {})),
+                }))
+            }),
+        ),
+        "Generic Selection": globalType(
+            {},
+            stateGroup({
+                "change context": state(group({
+                    "source": prop(component(typeRef("Source Selection", true), {})),
+                    "content": prop(component(typeRef("Source Selection Tail", true), {})),
+                })),
+                "implement me": state(atom("string literal")),
+                "optional": state(group({
+                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("optional")))),
+                    "temp type": prop(component(typeRef("Type Selection"), {})),
+                    "source": prop(component(typeRef("Source Selection", true), {})),
+                    "set": prop(component(typeRef("Source Selection Tail", true), {})),
+                    "not set": prop(component(typeRef("Source Selection Tail", true), {})),
+                })),
+                "panic": state(atom("string literal")),
+                "switch": state(group({
+                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                    "temp type": prop(component(typeRef("Type Selection"), {})),
+                    "source": prop(component(typeRef("Source Selection", true), {})),
+                    "cases": prop(constrainedDictionary(
+                        {
+
+                        },
+                        component(typeRef("Source Selection Tail", true), {})
+                    )),
+                    "default": prop(optional(component(typeRef("Source Selection Tail", true), {})))
+                })),
+                "variables": state(group({
+                    "variables": prop(component(typeRef("Variables"), {})),
+                    "content": prop(component(typeRef("Source Selection Tail", true), {})),
+                }))
+            }),
+        ),
+        "Generic Statement": globalType(
+            {},
+            stateGroup({
+                "change context": state(group({
+                    "source": prop(component(typeRef("Source Selection"), {})),
+                    "content": prop(component(typeRef("Statements", true), {})),
+                })),
+                "implement me": state(atom("string literal")),
+                "panic": state(atom("string literal")),
+                "switch": state(group({
+                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
+                    "temp type": prop(component(typeRef("Type Selection"), {})),
+                    "source": prop(component(typeRef("Source Selection"), {})),
+                    "cases": prop(constrainedDictionary(
+                        {
+
+                        },
+                        component(typeRef("Statements", true), {})
+                    )),
+                    "default": prop(optional(component(typeRef("Statements", true), {})))
+                })),
+                "variables": state(group({
+                    "variables": prop(component(typeRef("Variables"), {})),
+                    "content": prop(component(typeRef("Statements", true), {})),
+                }))
+            }),
+        ),
         "Type Selection": globalType(
             {},
             stateGroup(
@@ -204,7 +293,8 @@ const imp = typeLibrary(
             group({
                 "start": stateGroup({
                     "context": state(group({})),
-                    "variable": state(dictionaryReference(typeSelection("Aggregated Variables")))
+                    "variable": state(dictionaryReference(typeSelection("Aggregated Variables"))),
+                    "generic": state(component(typeRef("Generic Selection"), {})),
                 }),
                 "tail": prop(component(typeRef("Source Selection Tail"), {})),
             }),
@@ -308,33 +398,6 @@ const imp = typeLibrary(
             stateGroup({
                 "string literal": state(atom("string literal")),
             })
-        ),
-        "Generic Initialization": globalType(
-            {},
-            stateGroup({
-                "change context": state(group({
-                    "source": prop(component(typeRef("Source Selection"), {})),
-                    "initialization": prop(component(typeRef("Initialization", true), {})),
-                })),
-                "implement me": state(atom("string literal")),
-                "panic": state(atom("string literal")),
-                "switch": state(group({
-                    "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
-                    "temp type": prop(component(typeRef("Type Selection"), {})),
-                    "source": prop(component(typeRef("Source Selection"), {})),
-                    "cases": prop(constrainedDictionary(
-                        {
-
-                        },
-                        component(typeRef("Initialization", true), {})
-                    )),
-                    "default": prop(optional(component(typeRef("Initialization", true), {})))
-                })),
-                "variables": state(group({
-                    "variables": prop(component(typeRef("Variables"), {})),
-                    "initialization": prop(component(typeRef("Initialization", true), {})),
-                }))
-            }),
         ),
         "Initialization": globalType(
             {},
@@ -483,26 +546,11 @@ const imp = typeLibrary(
                     "definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("procedure")))),
                     "call": prop(component(typeRef("Function Call"), {})),
                 })),
-                "change context": state(group({
-                    "source": prop(component(typeRef("Source Selection"), {})),
-                    "block": prop(component(typeRef("Block"), {}))
-                })),
-
+                "generic": state(component(typeRef("Generic Statement"), {})),
                 "if": state(group({
                     "condition": prop(component(typeRef("Boolean Initialization Or Selection"), {})),
                     "then": prop(component(typeRef("Block"), {})),
                     "else": prop(optional(component(typeRef("Block"), {}))),
-                })),
-                "switch": state(group({
-                    "source": prop(component(typeRef("Source Selection"), {})),
-                    "context definition": prop(constraint(externalTypeSelection("typesystem", "Type", t_sg("tagged union")))),
-                    "cases": prop(constrainedDictionary(
-                        {
-
-                        },
-                        component(typeRef("Block"), {})
-                    )),
-                    "default": prop(optional(component(typeRef("Block"), {})))
                 })),
                 "with": state(group({
                     "source": prop(component(typeRef("Source Selection"), {})),
